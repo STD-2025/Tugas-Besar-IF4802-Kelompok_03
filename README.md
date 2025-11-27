@@ -1,4 +1,7 @@
 # KelolaBus - Bus Management Simulator
 
-## Usage
+## Setup Commands
+```bash
+make # Build and run the application
+```
 
