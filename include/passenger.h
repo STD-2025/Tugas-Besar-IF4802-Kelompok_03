@@ -1,18 +1,20 @@
 #pragma once
+#include <string>
 
 typedef struct {
-    int passengerID;
-} infotype;
+    int userID;
+    std::string nama;
+} userData;
 
-typedef struct psgElement *psgAddress;
+typedef struct usrElement *usrAddress;
 
-struct psgElement {
-    infotype info;
-    psgAddress next;
-    psgAddress prev;
+struct usrElement {
+    userData info;
+    usrAddress next;
+    usrAddress prev;
 };
 
 typedef struct {
-    psgAddress first;
-    psgAddress last;
-} psgList;
+    usrAddress first;
+    usrAddress last;
+} usrList;

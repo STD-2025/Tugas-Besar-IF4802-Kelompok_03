@@ -12,7 +12,7 @@ typedef struct busElement *busAddress;
 struct busElement {
     infotype info;
     busAddress next;
-    psgAddress firstPsg;
+    usrAddress firstPsg;
 };
 
 typedef struct {
