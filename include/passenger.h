@@ -18,3 +18,9 @@ typedef struct {
     usrAddress first;
     usrAddress last;
 } usrList;
+
+void createListPassenger(usrList &L);
+usrAddress createElmPassengger(int idUser, std::string nama);
+void insertFirstPassenger(usrList &L, usrAddress user);
+void insertLastPassenger(usrList &L, usrAddress user);
+void insertAfterPassenger(usrList &L, usrAddress prec, usrAddress user);
