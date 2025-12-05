@@ -33,4 +33,9 @@ test: $(TEST_TARGET)
 $(TEST_TARGET): $(TEST_SOURCES)
 	@$(MKDIR) bin
 	$(CXX) $(CXXFLAGS) $(TEST_SOURCES) -o $(TEST_TARGET)
-	@echo "Test build complete: $(TES
+	@echo "Test build complete: $(TEST_TARGET)"
+
+clean:
+	$(RM) bin/* || true
+
+.PHONY: all build run clean test
