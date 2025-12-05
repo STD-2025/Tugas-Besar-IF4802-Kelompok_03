@@ -1,6 +1,6 @@
 #include "bus.h"
 
-void createListBus(busList &L){
+void createListBus(BusList &L){
     L.first = nullptr;
 }
 
@@ -16,7 +16,7 @@ busAddress createElmBus(int idBus, int kapasitas, std::string rute){
     return bus;
 }
 
-void insertFirstBus(busList  &L, busAddress bus){
+void insertFirstBus(BusList  &L, busAddress bus){
     if(L.first == nullptr){
         L.first = bus;
     }else{
@@ -25,7 +25,7 @@ void insertFirstBus(busList  &L, busAddress bus){
     }
 }
 
-void insertLastBus(busList &L, busAddress bus){
+void insertLastBus(BusList &L, busAddress bus){
     busAddress q;
 
     if(L.first == nullptr){
@@ -40,7 +40,7 @@ void insertLastBus(busList &L, busAddress bus){
     }
 }
 
-void insertAfterBus(busList &L, busAddress bus, busAddress prec){
+void insertAfterBus(BusList &L, busAddress bus, busAddress prec){
     if(prec->next == nullptr){
         insertLastBus(L, bus);
     }else{

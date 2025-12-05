@@ -6,22 +6,22 @@ typedef struct {
     int busID;
     int capacity;
     std::string rute;
-} infotype;
+} Bus;
 
 typedef struct busElement *busAddress;
 
 struct busElement {
-    infotype info;
+    Bus info;
     busAddress next;
-    usrAddress firstPsg;
+    psgAddress firstPsg;
 };
 
 typedef struct {
     busAddress first;
-} busList;
+} BusList;
 
-void createListBus(busList &L);
+void createListBus(BusList &L);
 busAddress createElmBus(int idBus, int kapasitas, std::string rute);
-void insertFirstBus(busList  &L, busAddress bus);
-void insertLastBus(busList &L, busAddress bus);
-void insertAfterBus(busList &L, busAddress bus, busAddress prec);
+void insertFirstBus(BusList  &L, busAddress bus);
+void insertLastBus(BusList &L, busAddress bus);
+void insertAfterBus(BusList &L, busAddress bus, busAddress prec);

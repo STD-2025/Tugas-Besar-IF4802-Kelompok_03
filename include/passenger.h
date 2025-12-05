@@ -4,23 +4,23 @@
 typedef struct {
     int userID;
     std::string nama;
-} userData;
+} Passenger;
 
-typedef struct usrElement *usrAddress;
+typedef struct usrElement *psgAddress;
 
 struct usrElement {
-    userData info;
-    usrAddress next;
-    usrAddress prev;
+    Passenger info;
+    psgAddress next;
+    psgAddress prev;
 };
 
 typedef struct {
-    usrAddress first;
-    usrAddress last;
-} usrList;
+    psgAddress first;
+    psgAddress last;
+} PsgList;
 
-void createListPassenger(usrList &L);
-usrAddress createElmPassengger(int idUser, std::string nama);
-void insertFirstPassenger(usrList &L, usrAddress user);
-void insertLastPassenger(usrList &L, usrAddress user);
-void insertAfterPassenger(usrList &L, usrAddress prec, usrAddress user);
+void createListPassenger(PsgList &L);
+psgAddress createElmPassengger(int idUser, std::string nama);
+void insertFirstPassenger(PsgList &L, psgAddress user);
+void insertLastPassenger(PsgList &L, psgAddress user);
+void insertAfterPassenger(PsgList &L, psgAddress prec, psgAddress user);

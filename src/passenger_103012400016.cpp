@@ -1,12 +1,12 @@
 #include "bus.h"
 
-void createListPassenger(usrList &L){
+void createListPassenger(PsgList &L){
     L.first = nullptr;
     L.last = nullptr;
 }
 
-usrAddress createElmPassengger(int idUser, std::string nama){
-    usrAddress user;
+psgAddress createElmPassengger(int idUser, std::string nama){
+    psgAddress user;
 
     user = new usrElement;
     user->info.nama = nama;
@@ -17,7 +17,7 @@ usrAddress createElmPassengger(int idUser, std::string nama){
     return user;
 }
 
-void insertFirstPassenger(usrList &L, usrAddress user){
+void insertFirstPassenger(PsgList &L, psgAddress user){
     if(L.first == nullptr && L.last == nullptr){
         L.first = user;
         L.last = user;
@@ -28,7 +28,7 @@ void insertFirstPassenger(usrList &L, usrAddress user){
     }
 }
 
-void insertLastPassenger(usrList &L, usrAddress user){
+void insertLastPassenger(PsgList &L, psgAddress user){
     if(L.first == nullptr && L.last == nullptr){
         L.first = user;
         L.last = user;
@@ -39,7 +39,7 @@ void insertLastPassenger(usrList &L, usrAddress user){
     }
 }
 
-void insertAfterPassenger(usrList &L, usrAddress prec, usrAddress user){
+void insertAfterPassenger(PsgList &L, psgAddress prec, psgAddress user){
     user->next = prec->next;
     user->prev = prec;
     prec->next = user;
