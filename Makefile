@@ -20,22 +20,17 @@ endif
 
 all: run
 
-build:
+# build target automatically
+$(TARGET): $(SOURCES)
 	@$(MKDIR) bin
 	$(CXX) $(CXXFLAGS) $(SOURCES) -o $(TARGET)
 
-run:
-	@if [ ! -f $(TARGET) ]; then \
-		$(MAKE) build; \
-	fi
+run: $(TARGET)
 	$(RUN)
 
-test:
+test: $(TEST_TARGET)
+
+$(TEST_TARGET): $(TEST_SOURCES)
 	@$(MKDIR) bin
 	$(CXX) $(CXXFLAGS) $(TEST_SOURCES) -o $(TEST_TARGET)
-	@echo "Test build complete: $(TEST_TARGET)"
-
-clean:
-	$(RM) bin/* build/*
-
-.PHONY: all build run clean test
+	@echo "Test build complete: $(TES
