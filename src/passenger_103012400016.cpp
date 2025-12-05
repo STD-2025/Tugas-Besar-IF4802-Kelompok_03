@@ -1,47 +1,47 @@
-#include "bus.h"
+#include "passenger.h"
 
-void createListPassenger(PsgList &L){
+void createListPassenger(PassengerList &L){
     L.first = nullptr;
     L.last = nullptr;
 }
 
-psgAddress createElmPassengger(int idUser, std::string nama){
-    psgAddress user;
+psgAddress createElmPassengger(int id, std::string name) {
+    psgAddress psg;
 
-    user = new usrElement;
-    user->info.nama = nama;
-    user->info.userID = idUser;
-    user->next = nullptr;
-    user->prev = nullptr;
+    psg = new usrElement;
+    psg->info.nama = name;
+    psg->info.passengerID = id;
+    psg->next = nullptr;
+    psg->prev = nullptr;
 
-    return user;
+    return psg;
 }
 
-void insertFirstPassenger(PsgList &L, psgAddress user){
+void insertFirstPassenger(PassengerList &L, psgAddress psg) {
     if(L.first == nullptr && L.last == nullptr){
-        L.first = user;
-        L.last = user;
+        L.first = psg;
+        L.last = psg;
     }else{
-        user->next = L.first;
-        L.first->prev = user;
-        L.first = user;
+        psg->next = L.first;
+        L.first->prev = psg;
+        L.first = psg;
     }
 }
 
-void insertLastPassenger(PsgList &L, psgAddress user){
+void insertLastPassenger(PassengerList &L, psgAddress psg) {
     if(L.first == nullptr && L.last == nullptr){
-        L.first = user;
-        L.last = user;
+        L.first = psg;
+        L.last = psg;
     }else{
-        L.last->next = user;
-        user->prev = L.last;
-        L.last = user;
+        L.last->next = psg;
+        psg->prev = L.last;
+        L.last = psg;
     }
 }
 
-void insertAfterPassenger(PsgList &L, psgAddress prec, psgAddress user){
-    user->next = prec->next;
-    user->prev = prec;
-    prec->next = user;
-    prec->next->prev = user;
+void insertAfterPassenger(PassengerList &L, psgAddress prec, psgAddress psg){
+    psg->next = prec->next;
+    psg->prev = prec;
+    prec->next = psg;
+    prec->next->prev = psg;
 }

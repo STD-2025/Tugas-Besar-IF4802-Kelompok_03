@@ -2,7 +2,7 @@
 #include <string>
 
 typedef struct {
-    int userID;
+    int passengerID;
     std::string nama;
 } Passenger;
 
@@ -17,26 +17,26 @@ struct usrElement {
 typedef struct {
     psgAddress first;
     psgAddress last;
-} PsgList;
+} PassengerList;
 
-void createListPassenger(PsgList &L);
+void createListPassenger(PassengerList &L);
 
 psgAddress createElmPassengger(int id, std::string name);
 
-void insertFirstPassenger(PsgList &L, psgAddress psg);
+void insertFirstPassenger(PassengerList &L, psgAddress psg);
 
-void insertLastPassenger(PsgList &L, psgAddress psg);
+void insertLastPassenger(PassengerList &L, psgAddress psg);
 
-void insertAfterPassenger(PsgList &L, psgAddress prec, psgAddress psg);
+void insertAfterPassenger(PassengerList &L, psgAddress prec, psgAddress psg);
 
-void deleteFirstPsg(PsgList  &L);
+void deleteFirstPsg(PassengerList  &L);
 
-void deleteFirstPsg(PsgList &L, psgAddress &deleted);
+void deleteFirstPsg(PassengerList &L, psgAddress &deleted);
 
-void deleteLastPsg(PsgList &L);
+void deleteLastPsg(PassengerList &L);
 
-void deleteLastPsg(PsgList &L, psgAddress &deleted);
+void deleteLastPsg(PassengerList &L, psgAddress &deleted);
 
-void deleteAfterPsg(PsgList &L, psgAddress prec);
+void deleteAfterPsg(PassengerList &L, psgAddress prec);
 
-void deleteAfterPsg(PsgList &L, psgAddress prec, psgAddress &deleted);
+void deleteAfterPsg(PassengerList &L, psgAddress prec, psgAddress &deleted);
