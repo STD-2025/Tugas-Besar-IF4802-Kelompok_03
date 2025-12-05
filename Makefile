@@ -1,41 +1,44 @@
-CXX = g++
-CXXFLAGS = -Wall -Wextra -O2 -std=c++17 -I include
+CXX       := g++
+CXXFLAGS  := -Wall -Wextra -O2 -std=c++17 -I include
 
-SOURCES = $(wildcard src/*.cpp)
-TEST_SOURCES = $(wildcard test/*.cpp)
+SRCDIR    := src
+OBJDIR    := obj
+BINDIR    := bin
+TARGET_NAME := main
 
 ifeq ($(OS),Windows_NT)
-    TARGET = bin/main.exe
-    TEST_TARGET = bin/test.exe
-    MKDIR = mkdir
-    RM = del /q
-    RUN = $(TARGET)
+  TARGET := $(BINDIR)/$(TARGET_NAME).exe
+  MKDIR  := mkdir
+  RM     := rmdir /s /q
+  RUN    := $(TARGET)
 else
-    TARGET = bin/main
-    TEST_TARGET = bin/test
-    MKDIR = mkdir -p
-    RM = rm -rf
-    RUN = ./$(TARGET)
+  TARGET := $(BINDIR)/$(TARGET_NAME)
+  MKDIR  := mkdir -p
+  RM     := rm -rf
+  RUN    := ./$(TARGET)
 endif
 
-all: run
+SOURCES  := $(wildcard $(SRCDIR)/*.cpp)
+OBJECTS  := $(patsubst $(SRCDIR)/%.cpp,$(OBJDIR)/%.o,$(SOURCES))
 
-# build target automatically
-$(TARGET): $(SOURCES)
-	@$(MKDIR) bin
-	$(CXX) $(CXXFLAGS) $(SOURCES) -o $(TARGET)
+all: obj bin run
+
+obj: $(OBJECTS)
+
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
+	@$(MKDIR) $(OBJDIR)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+bin: $(TARGET)
+
+$(TARGET): $(OBJECTS)
+	@$(MKDIR) $(BINDIR)
+	$(CXX) $(CXXFLAGS) $(OBJECTS) -o $(TARGET)
 
 run: $(TARGET)
 	$(RUN)
 
-test: $(TEST_TARGET)
-
-$(TEST_TARGET): $(TEST_SOURCES)
-	@$(MKDIR) bin
-	$(CXX) $(CXXFLAGS) $(TEST_SOURCES) -o $(TEST_TARGET)
-	@echo "Test build complete: $(TEST_TARGET)"
-
 clean:
-	$(RM) bin/* || true
+	$(RM) $(OBJDIR) $(BINDIR)
 
-.PHONY: all build run clean test
+.PHONY: all obj bin run clean
