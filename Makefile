@@ -8,7 +8,7 @@ TARGET_NAME := main
 
 ifeq ($(OS),Windows_NT)
   TARGET := $(BINDIR)/$(TARGET_NAME).exe
-  MKDIR  := mkdir
+  MKDIR  := powershell -Command "New-Item -ItemType Directory -Force -Path"
   RM     := rmdir /s /q
   RUN    := $(TARGET)
 else
