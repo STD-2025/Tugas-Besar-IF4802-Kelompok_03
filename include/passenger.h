@@ -20,7 +20,23 @@ typedef struct {
 } PsgList;
 
 void createListPassenger(PsgList &L);
-psgAddress createElmPassengger(int idUser, std::string nama);
-void insertFirstPassenger(PsgList &L, psgAddress user);
-void insertLastPassenger(PsgList &L, psgAddress user);
-void insertAfterPassenger(PsgList &L, psgAddress prec, psgAddress user);
+
+psgAddress createElmPassengger(int id, std::string name);
+
+void insertFirstPassenger(PsgList &L, psgAddress psg);
+
+void insertLastPassenger(PsgList &L, psgAddress psg);
+
+void insertAfterPassenger(PsgList &L, psgAddress prec, psgAddress psg);
+
+void deleteFirstPsg(PsgList  &L);
+
+void deleteFirstPsg(PsgList &L, psgAddress &deleted);
+
+void deleteLastPsg(PsgList &L);
+
+void deleteLastPsg(PsgList &L, psgAddress &deleted);
+
+void deleteAfterPsg(PsgList &L, psgAddress prec);
+
+void deleteAfterPsg(PsgList &L, psgAddress prec, psgAddress &deleted);
