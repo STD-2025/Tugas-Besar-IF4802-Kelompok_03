@@ -5,7 +5,7 @@
 typedef struct {
     int busID;
     int capacity;
-    std::string rute;
+    std::string route;
 } Bus;
 
 typedef struct busElement *busAddress;

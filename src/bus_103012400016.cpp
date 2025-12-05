@@ -10,7 +10,7 @@ busAddress createElmBus(int idBus, int kapasitas, std::string rute){
     bus = new busElement;
     bus->info.busID = idBus;
     bus->info.capacity = kapasitas;
-    bus->info.rute = rute;
+    bus->info.route = rute;
     bus->next = nullptr;
     bus->firstPsg = nullptr;
     return bus;

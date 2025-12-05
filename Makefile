@@ -2,14 +2,17 @@ CXX = g++
 CXXFLAGS = -Wall -Wextra -O2 -std=c++17 -I include
 
 SOURCES = $(wildcard src/*.cpp)
+TEST_SOURCES = $(wildcard test/*.cpp)
 
 ifeq ($(OS),Windows_NT)
     TARGET = bin/main.exe
+    TEST_TARGET = bin/test.exe
     MKDIR = mkdir
     RM = del /q
     RUN = $(TARGET)
 else
     TARGET = bin/main
+    TEST_TARGET = bin/test
     MKDIR = mkdir -p
     RM = rm -rf
     RUN = ./$(TARGET)
@@ -25,10 +28,14 @@ run:
 	@if [ ! -f $(TARGET) ]; then \
 		$(MAKE) build; \
 	fi
-
 	$(RUN)
+
+test:
+	@$(MKDIR) bin
+	$(CXX) $(CXXFLAGS) $(TEST_SOURCES) -o $(TEST_TARGET)
+	@echo "Test build complete: $(TEST_TARGET)"
 
 clean:
 	$(RM) bin/* build/*
 
-.PHONY: all build run clean
+.PHONY: all build run clean test
