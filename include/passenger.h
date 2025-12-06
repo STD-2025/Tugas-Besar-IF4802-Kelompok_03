@@ -24,11 +24,11 @@ void createListPassenger(PassengerList &L);
 
 psgAddress createElmPassengger(int id, std::string name, std::string dateOfBirth);
 
-void insertFirstPassenger(PassengerList &L, psgAddress psg, busAddress bus);
+void insertFirstPassenger(psgAddress psg, busAddress bus);
 
-void insertLastPassenger(PassengerList &L, psgAddress psg, busAddress bus);
+void insertLastPassenger(psgAddress psg, busAddress bus);
 
-void insertAfterPassenger(PassengerList &L, psgAddress prec, psgAddress psg, busAddress bus);
+void insertAfterPassenger(psgAddress prec, psgAddress psg, busAddress bus);
 
 void deleteFirstPsg(PassengerList  &L);
 
