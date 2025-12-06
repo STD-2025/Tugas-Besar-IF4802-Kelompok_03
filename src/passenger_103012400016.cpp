@@ -14,23 +14,19 @@ psgAddress createElmPassengger(int id, std::string name, std::string tglLahir) {
 }
 
 void insertFirstPassenger(psgAddress psg, busAddress bus) {
-    if(L.first == nullptr && L.last == nullptr){
+    if(bus->firstPsg == nullptr){
         bus->firstPsg = psg;
-        L.first = psg;
-        L.last = psg;
     }else{
         psg->next = bus->firstPsg;
         bus->firstPsg->prev = psg;
         bus->firstPsg = psg;
-        L.first = psg;
     }
 }
 
 void insertLastPassenger(psgAddress psg, busAddress bus) {
     psgAddress q;
-    if(L.first == nullptr && L.last == nullptr){
-        L.first = psg;
-        L.last = psg;
+    if(bus->firstPsg == nullptr){
+       bus->firstPsg = psg;
     }else{
         q = bus->firstPsg;
         while (q->next != nullptr)
@@ -38,8 +34,7 @@ void insertLastPassenger(psgAddress psg, busAddress bus) {
             q = q->next;
         }
         q->next = psg;
-        psg->prev = L.last;
-        L.last = psg;
+        psg->prev = q;
     }
 }
 
