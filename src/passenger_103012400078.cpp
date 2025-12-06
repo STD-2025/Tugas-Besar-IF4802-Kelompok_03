@@ -1,4 +1,4 @@
-#include "passenger.h"
+#include "psg_operation.h"
 #include <iostream>
 
 void deleteFirstPsg(PassengerList  &L) {
@@ -110,7 +110,8 @@ void displayListPassenger(PassengerList L) {
     for (psgAddress p = L.first; p; p = p->next) {
         std::cout << "Passenger-" << i << ":\n";
         std::cout << "ID: "<< p->info.passengerID << "\n";
-        std::cout << "Nama: "<< p->info.nama << "\n" << std::endl;
+        std::cout << "Nama: "<< p->info.name << "\n" << std::endl;
+        std::cout << "Date of Birth: "<< p->info.dateOfBirth << "\n" << std::endl;
         ++i;
     }
 }
