@@ -58,4 +58,4 @@ void insertAfterPassenger(PassengerList &L, psgAddress prec, psgAddress psg, bus
     psg->prev = prec;
     prec->next = psg;
     prec->next->prev = psg;
-}
+} 
