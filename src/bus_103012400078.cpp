@@ -1,4 +1,4 @@
-#include "bus.h"
+#include "bus_operation.h"
 #include <iostream>
 
 void deleteFirstBus(BusList  &L) {

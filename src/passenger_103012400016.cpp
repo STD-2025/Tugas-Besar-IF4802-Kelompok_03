@@ -1,9 +1,4 @@
-#include "bus.h"
-
-void createListPassenger(PassengerList &L){
-    L.first = nullptr;
-    L.last = nullptr;
-}
+#include "psg_operation.h"
 
 psgAddress createElmPassengger(int id, std::string name, std::string tglLahir) {
     psgAddress psg;
@@ -18,7 +13,7 @@ psgAddress createElmPassengger(int id, std::string name, std::string tglLahir) {
     return psg;
 }
 
-void insertFirstPassenger(PassengerList &L, psgAddress psg, busAddress bus) {
+void insertFirstPassenger(psgAddress psg, busAddress bus) {
     if(L.first == nullptr && L.last == nullptr){
         bus->firstPsg = psg;
         L.first = psg;
@@ -31,7 +26,7 @@ void insertFirstPassenger(PassengerList &L, psgAddress psg, busAddress bus) {
     }
 }
 
-void insertLastPassenger(PassengerList &L, psgAddress psg, busAddress bus) {
+void insertLastPassenger(psgAddress psg, busAddress bus) {
     psgAddress q;
     if(L.first == nullptr && L.last == nullptr){
         L.first = psg;
@@ -48,7 +43,7 @@ void insertLastPassenger(PassengerList &L, psgAddress psg, busAddress bus) {
     }
 }
 
-void insertAfterPassenger(PassengerList &L, psgAddress prec, psgAddress psg, busAddress bus){
+void insertAfterPassenger(psgAddress prec, psgAddress psg, busAddress bus){
     psgAddress q;
     q = bus->firstPsg;
     while (q != prec)

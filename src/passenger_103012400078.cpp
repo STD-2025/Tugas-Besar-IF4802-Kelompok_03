@@ -1,4 +1,4 @@
-#include "passenger.h"
+#include "psg_operation.h"
 #include <iostream>
 
 void deleteFirstPsg(PassengerList  &L) {
