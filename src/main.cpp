@@ -1,5 +1,6 @@
 #include <iostream>
-#include "bus.h"
+#include "bus_operation.h"
+#include "psg_operation.h"
 
 using namespace std;
 
@@ -13,7 +14,6 @@ int main(void) {
 
     BusList L;
     busAddress b1, b2, b3;
-    PassengerList LP;
     psgAddress p1, p2, p3;
 
     createListBus(L);
@@ -27,15 +27,13 @@ int main(void) {
 
     displayListBus(L);
 
-    createListPassenger(LP);
-
     p1 = createElmPassengger(1, "Andi", "12-1-2009");
     p2 = createElmPassengger(2, "dono", "25-3-2006");
     p3 = createElmPassengger(3, "toto", "01-8-2002");
 
-    insertLastPassenger(LP, p1);
-    insertLastPassenger(LP, p2);
-    insertLastPassenger(LP, p3);
+    insertLastPassenger(p1, b1);
+    insertLastPassenger(p2, b2);
+    insertLastPassenger(p3, b3);
 
     displayListPassenger(LP);
     
