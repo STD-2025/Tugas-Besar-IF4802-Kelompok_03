@@ -1,4 +1,4 @@
-#include "passenger.h"
+#include "bus.h"
 
 void createListPassenger(PassengerList &L){
     L.first = nullptr;
@@ -17,29 +17,43 @@ psgAddress createElmPassengger(int id, std::string name) {
     return psg;
 }
 
-void insertFirstPassenger(PassengerList &L, psgAddress psg) {
+void insertFirstPassenger(PassengerList &L, psgAddress psg, busAddress bus) {
     if(L.first == nullptr && L.last == nullptr){
+        bus->firstPsg = psg;
         L.first = psg;
         L.last = psg;
     }else{
-        psg->next = L.first;
-        L.first->prev = psg;
+        psg->next = bus->firstPsg;
+        bus->firstPsg->prev = psg;
+        bus->firstPsg = psg;
         L.first = psg;
     }
 }
 
-void insertLastPassenger(PassengerList &L, psgAddress psg) {
+void insertLastPassenger(PassengerList &L, psgAddress psg, busAddress bus) {
+    psgAddress q;
     if(L.first == nullptr && L.last == nullptr){
         L.first = psg;
         L.last = psg;
     }else{
-        L.last->next = psg;
+        q = bus->firstPsg;
+        while (q->next != nullptr)
+        {
+            q = q->next;
+        }
+        q->next = psg;
         psg->prev = L.last;
         L.last = psg;
     }
 }
 
-void insertAfterPassenger(PassengerList &L, psgAddress prec, psgAddress psg){
+void insertAfterPassenger(PassengerList &L, psgAddress prec, psgAddress psg, busAddress bus){
+    psgAddress q;
+    q = bus->firstPsg;
+    while (q != prec)
+    {
+        q = q->next;
+    }
     psg->next = prec->next;
     psg->prev = prec;
     prec->next = psg;
