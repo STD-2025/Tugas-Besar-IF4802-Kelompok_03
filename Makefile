@@ -36,7 +36,10 @@ $(TARGET): $(OBJECTS)
 	$(CXX) $(CXXFLAGS) $(OBJECTS) -o $(TARGET)
 
 run: $(TARGET)
-	$(RUN)
+	@echo ""
+	@echo "Running..."
+	@echo ""
+	@$(RUN)
 
 clean:
 	$(RM) $(OBJDIR) $(BINDIR)

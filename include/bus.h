@@ -40,3 +40,7 @@ void deleteLastBus(BusList &L, busAddress &deleted);
 void deleteAfterBus(BusList &L, busAddress prec);
 
 void deleteAfterBus(BusList &L, busAddress prec, busAddress &deleted);
+
+busAddress findElmBus(BusList L, int id);
+
+void displayListBus(BusList L);

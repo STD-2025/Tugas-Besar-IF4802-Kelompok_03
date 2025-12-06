@@ -3,7 +3,14 @@
 
 using namespace std;
 
+void optimizer() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+}
+
 int main(void) {
+    optimizer();
+
     BusList L;
     busAddress b1, b2, b3;
     PassengerList LP;
@@ -18,6 +25,8 @@ int main(void) {
     insertLastBus(L, b1);
     insertLastBus(L, b2);
 
+    displayListBus(L);
+
     createListPassenger(LP);
 
     p1 = createElmPassengger(1, "Andi");
@@ -27,7 +36,8 @@ int main(void) {
     insertLastPassenger(LP, p1);
     insertLastPassenger(LP, p2);
     insertLastPassenger(LP, p3);
+
+    displayListPassenger(LP);
     
-    cout << "HAIFIZH SUHU" << endl; 
     return 0;
 }

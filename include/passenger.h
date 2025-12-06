@@ -6,9 +6,9 @@ typedef struct {
     std::string nama;
 } Passenger;
 
-typedef struct usrElement *psgAddress;
+typedef struct passengerElement *psgAddress;
 
-struct usrElement {
+struct passengerElement {
     Passenger info;
     psgAddress next;
     psgAddress prev;
@@ -40,3 +40,7 @@ void deleteLastPsg(PassengerList &L, psgAddress &deleted);
 void deleteAfterPsg(PassengerList &L, psgAddress prec);
 
 void deleteAfterPsg(PassengerList &L, psgAddress prec, psgAddress &deleted);
+
+psgAddress findElmPassenger(PassengerList L, int id);
+
+void displayListPassenger(PassengerList L);

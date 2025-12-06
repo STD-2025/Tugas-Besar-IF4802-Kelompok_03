@@ -8,7 +8,7 @@ void createListPassenger(PassengerList &L){
 psgAddress createElmPassengger(int id, std::string name) {
     psgAddress psg;
 
-    psg = new usrElement;
+    psg = new passengerElement;
     psg->info.nama = name;
     psg->info.passengerID = id;
     psg->next = nullptr;
