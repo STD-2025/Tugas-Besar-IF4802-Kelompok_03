@@ -29,9 +29,9 @@ int main(void) {
 
     createListPassenger(LP);
 
-    p1 = createElmPassengger(1, "Andi");
-    p2 = createElmPassengger(2, "dono");
-    p3 = createElmPassengger(3, "toto");
+    p1 = createElmPassengger(1, "Andi", "12-1-2009");
+    p2 = createElmPassengger(2, "dono", "25-3-2006");
+    p3 = createElmPassengger(3, "toto", "01-8-2002");
 
     insertLastPassenger(LP, p1);
     insertLastPassenger(LP, p2);
