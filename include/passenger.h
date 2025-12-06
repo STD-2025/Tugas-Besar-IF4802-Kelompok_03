@@ -1,5 +1,5 @@
 #pragma once
-#include <string>
+#include "bus_fwd.h"
 
 typedef struct {
     int passengerID;
@@ -15,33 +15,26 @@ struct passengerElement {
     psgAddress prev;
 };
 
-typedef struct {
-    psgAddress first;
-    psgAddress last;
-} PassengerList;
-
-void createListPassenger(PassengerList &L);
-
 psgAddress createElmPassengger(int id, std::string name, std::string dateOfBirth);
 
-void insertFirstPassenger(PassengerList &L, psgAddress psg, busAddress bus);
+void insertFirstPassenger(psgAddress psg, busAddress bus);
 
-void insertLastPassenger(PassengerList &L, psgAddress psg, busAddress bus);
+void insertLastPassenger(psgAddress psg, busAddress bus);
 
-void insertAfterPassenger(PassengerList &L, psgAddress prec, psgAddress psg, busAddress bus);
+void insertAfterPassenger(psgAddress prec, psgAddress psg, busAddress bus);
 
-void deleteFirstPsg(PassengerList  &L);
+void deleteFirstPsg(busAddress &bus);
 
-void deleteFirstPsg(PassengerList &L, psgAddress &deleted);
+void deleteFirstPsg(busAddress &bus, psgAddress &deleted);
 
-void deleteLastPsg(PassengerList &L);
+void deleteLastPsg(busAddress &bus);
 
-void deleteLastPsg(PassengerList &L, psgAddress &deleted);
+void deleteLastPsg(busAddress &bus, psgAddress &deleted);
 
-void deleteAfterPsg(PassengerList &L, psgAddress prec);
+void deleteAfterPsg(busAddress &bus, psgAddress prec);
 
-void deleteAfterPsg(PassengerList &L, psgAddress prec, psgAddress &deleted);
+void deleteAfterPsg(busAddress &bus, psgAddress prec, psgAddress &deleted);
 
-psgAddress findElmPassenger(PassengerList L, int id);
+psgAddress findElmPassenger(busAddress bus, int id);
 
-void displayListPassenger(PassengerList L);
+void displayListPassenger(busAddress bus);

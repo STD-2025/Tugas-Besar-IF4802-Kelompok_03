@@ -1,13 +1,11 @@
 #pragma once
-#include "passenger.h"
+#include "bus_fwd.h"
 
 typedef struct {
     int busID;
     int capacity;
     std::string route;
 } Bus;
-
-typedef struct busElement *busAddress;
 
 struct busElement {
     Bus info;
