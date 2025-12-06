@@ -9,7 +9,7 @@ psgAddress createElmPassengger(int id, std::string name, std::string tglLahir) {
     psgAddress psg;
 
     psg = new passengerElement;
-    psg->info.nama = name;
+    psg->info.name = name;
     psg->info.passengerID = id;
     psg->info.dateOfBirth = tglLahir;
     psg->next = nullptr;

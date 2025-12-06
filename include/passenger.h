@@ -3,7 +3,7 @@
 
 typedef struct {
     int passengerID;
-    std::string nama;
+    std::string name;
     std::string dateOfBirth;
 } Passenger;
 
