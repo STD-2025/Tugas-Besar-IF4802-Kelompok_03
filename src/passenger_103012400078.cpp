@@ -1,113 +1,119 @@
 #include "psg_operation.h"
 #include <iostream>
 
-void deleteFirstPsg(PassengerList  &L) {
-    if (L.first == nullptr) return;
+void deleteFirstPsg(busAddress &bus) {
+    if (!bus || bus->firstPsg == nullptr) return;
 
-    if (L.first == L.last) {
-        L.last = nullptr;
+    psgAddress p = bus->firstPsg;
+
+    if (p->next != nullptr) {
+        p->next->prev = nullptr;
     }
 
-    psgAddress p = L.first;
-    L.first = p->next;
+    bus->firstPsg = p->next;
+
     delete p;
 }
 
-void deleteFirstPsg(PassengerList &L, psgAddress &deleted) {
-    if (L.first == nullptr) {
+void deleteFirstPsg(busAddress &bus, psgAddress &deleted) {
+    if (!bus || bus->firstPsg == nullptr) {
         deleted = nullptr;
         return;
     }
 
-    if (L.first == L.last) {
-        L.last = nullptr;
+    deleted = bus->firstPsg;
+
+    if (deleted->next != nullptr) {
+        deleted->next->prev = nullptr;
     }
 
-    deleted = L.first;
-    L.first = deleted->next;
+    bus->firstPsg = deleted->next;
+
+    deleted->prev = nullptr;
     deleted->next = nullptr;
 }
 
-void deleteLastPsg(PassengerList &L) {
-    if (L.first == nullptr) {
+void deleteLastPsg(busAddress &bus) {
+    if (!bus || bus->firstPsg == nullptr) {
         return;
     }
 
-    if (L.first == L.last) {
-        delete L.first;
-        L.first = nullptr;
-        L.last = nullptr;
+    if (bus->firstPsg->next == nullptr) {
+        delete bus->firstPsg;
+        bus->firstPsg = nullptr;
     }
     else {
-        L.last = L.last->prev;
-        delete L.last->next;
-        L.last->next = nullptr;
+        psgAddress p = bus->firstPsg;
+        while (p->next) p = p->next;
+        p->prev->next = nullptr;
+        delete p;
     }
 }
 
-void deleteLastPsg(PassengerList &L, psgAddress &deleted) {
-    if (L.first == nullptr) {
+void deleteLastPsg(busAddress &bus, psgAddress &deleted) {
+    if (!bus || bus->firstPsg == nullptr) {
         deleted = nullptr;
         return;
     }
 
-    if (L.first == L.last) {
-        deleted = L.first;
-        L.first = nullptr;
-        L.last = nullptr;
+    if (bus->firstPsg->next == nullptr) {
+        deleted = bus->firstPsg;
+        bus->firstPsg = nullptr;
     }
     else {
-        L.last = L.last->prev;
-        deleted = L.last->next;
-        L.last->next = nullptr;
+        psgAddress p = bus->firstPsg;
+
+        while (p->next) p = p->next;
+
+        deleted = p;
+        deleted->prev->next = nullptr;
+        deleted->prev = nullptr;
     }
 }
 
-void deleteAfterPsg(PassengerList &L, psgAddress prec) {
-    if (prec == nullptr || prec->next == nullptr) {
-        return;
-    }
+void deleteAfterPsg(busAddress &bus, psgAddress prec) {
+    if (prec == nullptr || prec->next == nullptr) return;
 
     psgAddress p = prec->next;
 
-    if (prec->next == L.last) {
-        L.last = prec;
-    } else {
+    if (p->next != nullptr) {
         p->next->prev = prec;
     }
 
     prec->next = p->next;
+
     delete p;
 }
 
-void deleteAfterPsg(PassengerList &L, psgAddress prec, psgAddress &deleted) {
-    if (prec == nullptr || prec->next == nullptr) {
-        return;
-    }
+void deleteAfterPsg(busAddress &bus, psgAddress prec, psgAddress &deleted) {
+    if (prec == nullptr || prec->next == nullptr) return;
 
     deleted = prec->next;
 
-    if (prec->next == L.last) {
-        L.last = prec;
-    }
-    else {
+    if (deleted->next != nullptr) {
         deleted->next->prev = prec;
     }
 
     prec->next = deleted->next;
+
     deleted->next = nullptr;
+
     deleted->prev = nullptr;
 }
 
-psgAddress findElmPassenger(PassengerList L, int id) {
-    psgAddress p = L.first;
+psgAddress findElmPassenger(busAddress bus, int id) {
+    if (!bus) return nullptr;
+
+    psgAddress p = bus->firstPsg;
     while (p && p->info.passengerID != id) p = p->next;
     return p;
 }
 
-void displayListPassenger(PassengerList L) {
+void displayListPassenger(busAddress bus) {
+    if (!bus) return;
+    
     int i = 1;
-    for (psgAddress p = L.first; p; p = p->next) {
+    for (psgAddress p = bus->firstPsg; p; p = p->next) {
         std::cout << "Passenger-" << i << ":\n";
         std::cout << "ID: "<< p->info.passengerID << "\n";
         std::cout << "Nama: "<< p->info.name << "\n" << std::endl;
