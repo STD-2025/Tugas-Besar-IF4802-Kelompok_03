@@ -5,12 +5,13 @@ void createListPassenger(PassengerList &L){
     L.last = nullptr;
 }
 
-psgAddress createElmPassengger(int id, std::string name) {
+psgAddress createElmPassengger(int id, std::string name, std::string tglLahir) {
     psgAddress psg;
 
     psg = new passengerElement;
     psg->info.nama = name;
     psg->info.passengerID = id;
+    psg->info.dateOfBirth = tglLahir;
     psg->next = nullptr;
     psg->prev = nullptr;
 

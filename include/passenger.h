@@ -4,6 +4,7 @@
 typedef struct {
     int passengerID;
     std::string nama;
+    std::string dateOfBirth;
 } Passenger;
 
 typedef struct passengerElement *psgAddress;
