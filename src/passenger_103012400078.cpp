@@ -116,7 +116,7 @@ void displayListPassenger(busAddress bus) {
     for (psgAddress p = bus->firstPsg; p; p = p->next) {
         std::cout << "Passenger-" << i << ":\n";
         std::cout << "ID: "<< p->info.passengerID << "\n";
-        std::cout << "Nama: "<< p->info.name << "\n" << std::endl;
+        std::cout << "Nama: "<< p->info.name << "\n";
         std::cout << "Date of Birth: "<< p->info.dateOfBirth << "\n" << std::endl;
         ++i;
     }
