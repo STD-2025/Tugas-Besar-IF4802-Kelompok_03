@@ -30,16 +30,33 @@ int main(void) {
 
     displayListBus(L);
 
-    deleteFirstBus(L);
-    deleteAfterBus(L, b1);
-    deleteLastBus(L);
+    // deleteFirstBus(L);
+    // deleteAfterBus(L, b1);
+    // deleteLastBus(L);
 
-    displayListBus(L);
+    // displayListBus(L);
 
+    // for (int i = 0; i < 2; i++){
+    //     Passenger x;
+    //     psgAddress p;
+    //     cin >> x.passengerID >> x.name >> x.dateOfBirth;
+    //     p = createElmPassengger(x.passengerID, x.name, x.dateOfBirth);
+    //     insertLastPassenger(p, b1);
+    //     displayListPassenger(b1);
+    // }
+    // displayListBus(L);
+    //   for (int i = 0; i < 2; i++){
+    //     Passenger x;
+    //     psgAddress p;
+    //     cin >> x.passengerID >> x.name >> x.dateOfBirth;
+    //     p = createElmPassengger(x.passengerID, x.name, x.dateOfBirth);
+    //     insertLastPassenger(p, b2);
+    //     displayListPassenger(b2);
+    // }
     p1 = createElmPassengger(1, "Andi", "12-1-2009");
     p2 = createElmPassengger(2, "dono", "25-3-2006");
     p3 = createElmPassengger(3, "toto", "01-8-2002");
-    p4 = createElmPassengger(3, "agus", "09-12-2010");
+    p4 = createElmPassengger(4, "agus", "09-12-2010");
 
     insertFirstPassenger(p1, b2);
     insertLastPassenger(p2, b2);
@@ -54,6 +71,7 @@ int main(void) {
     deleteAfterPsg(b2, p1);
 
     displayListPassenger(b2);
+    displayListBus(L);
 
     return 0;
 }

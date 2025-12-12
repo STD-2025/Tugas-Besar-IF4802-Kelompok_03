@@ -5,6 +5,7 @@ typedef struct {
     int busID;
     int capacity;
     std::string route;
+    int jumPsg;
 } Bus;
 
 struct busElement {
