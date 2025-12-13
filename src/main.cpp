@@ -30,11 +30,11 @@ int main(void) {
 
     displayListBus(L);
 
-    // deleteFirstBus(L);
-    // deleteAfterBus(L, b1);
-    // deleteLastBus(L);
+    deleteFirstBus(L);
+    deleteAfterBus(L, b2);
+    deleteLastBus(L);
 
-    // displayListBus(L);
+    displayListBus(L);
 
     // for (int i = 0; i < 2; i++){
     //     Passenger x;
