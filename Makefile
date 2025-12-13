@@ -1,5 +1,6 @@
 CXX       := g++
 CXXFLAGS  := -Wall -Wextra -O2 -std=c++17 -I include
+LDFLAGS := -lncurses
 
 SRCDIR    := src
 OBJDIR    := obj
@@ -18,22 +19,22 @@ else
   RUN    := ./$(TARGET)
 endif
 
-SOURCES  := $(wildcard $(SRCDIR)/*.cpp)
-OBJECTS  := $(patsubst $(SRCDIR)/%.cpp,$(OBJDIR)/%.o,$(SOURCES))
+SOURCES := $(shell find $(SRCDIR) -name '*.cpp')
+OBJECTS := $(patsubst $(SRCDIR)/%.cpp,$(OBJDIR)/%.o,$(SOURCES))
 
 all: obj bin run
 
 obj: $(OBJECTS)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
-	@$(MKDIR) $(OBJDIR)
+	@$(MKDIR) $(dir $@)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 bin: $(TARGET)
 
 $(TARGET): $(OBJECTS)
 	@$(MKDIR) $(BINDIR)
-	$(CXX) $(CXXFLAGS) $(OBJECTS) -o $(TARGET)
+	$(CXX) $(CXXFLAGS) $(OBJECTS) -o $(TARGET) $(LDFLAGS)
 
 run: $(TARGET)
 	@echo ""
