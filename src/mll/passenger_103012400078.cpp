@@ -14,7 +14,7 @@ void deleteFirstPsg(busAddress &bus) {
 
     delete p;
 
-    bus->info.jumPsg--;
+    bus->info.passengerCount--;
 }
 
 void deleteFirstPsg(busAddress &bus, psgAddress &deleted) {
@@ -34,7 +34,7 @@ void deleteFirstPsg(busAddress &bus, psgAddress &deleted) {
     deleted->prev = nullptr;
     deleted->next = nullptr;
 
-    bus->info.jumPsg--;
+    bus->info.passengerCount--;
 }
 
 void deleteLastPsg(busAddress &bus) {
@@ -52,7 +52,7 @@ void deleteLastPsg(busAddress &bus) {
         p->prev->next = nullptr;
         delete p;
     }
-    bus->info.jumPsg--;
+    bus->info.passengerCount--;
 }
 
 void deleteLastPsg(busAddress &bus, psgAddress &deleted) {
@@ -74,7 +74,7 @@ void deleteLastPsg(busAddress &bus, psgAddress &deleted) {
         deleted->prev->next = nullptr;
         deleted->prev = nullptr;
     }
-    bus->info.jumPsg--;
+    bus->info.passengerCount--;
 }
 
 void deleteAfterPsg(busAddress &bus, psgAddress prec) {
@@ -90,7 +90,7 @@ void deleteAfterPsg(busAddress &bus, psgAddress prec) {
 
     delete p;
 
-    bus->info.jumPsg--;
+    bus->info.passengerCount--;
 }
 
 void deleteAfterPsg(busAddress &bus, psgAddress prec, psgAddress &deleted) {
@@ -108,7 +108,7 @@ void deleteAfterPsg(busAddress &bus, psgAddress prec, psgAddress &deleted) {
 
     deleted->prev = nullptr;
 
-    bus->info.jumPsg--;
+    bus->info.passengerCount--;
 }
 
 psgAddress findElmPassenger(busAddress bus, int id) {

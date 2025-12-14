@@ -18,21 +18,21 @@ psgAddress createElmPassengger(int id, std::string name, std::string tglLahir) {
 void insertFirstPassenger(psgAddress psg, busAddress bus) {
     if(bus->firstPsg == nullptr){
         bus->firstPsg = psg;
-    }else if(bus->info.jumPsg == bus->info.capacity){
+    }else if(bus->info.passengerCount == bus->info.capacity){
         return;
     }else{
         psg->next = bus->firstPsg;
         bus->firstPsg->prev = psg;
         bus->firstPsg = psg;
     }
-    bus->info.jumPsg++;
+    bus->info.passengerCount++;
 }
 
 void insertLastPassenger(psgAddress psg, busAddress bus) {
     psgAddress q;
     if(bus->firstPsg == nullptr){
        bus->firstPsg = psg;
-    }else if(bus->info.jumPsg == bus->info.capacity){
+    }else if(bus->info.passengerCount == bus->info.capacity){
         return;
     }else{
         q = bus->firstPsg;
@@ -43,11 +43,11 @@ void insertLastPassenger(psgAddress psg, busAddress bus) {
         q->next = psg;
         psg->prev = q;
     }
-    bus->info.jumPsg++;
+    bus->info.passengerCount++;
 }
 
 void insertAfterPassenger(psgAddress prec, psgAddress psg, busAddress bus){
-    if(bus !=  nullptr && bus->info.jumPsg == bus->info.capacity){
+    if(bus !=  nullptr && bus->info.passengerCount == bus->info.capacity){
       return;
     }
     psgAddress q;
@@ -61,5 +61,5 @@ void insertAfterPassenger(psgAddress prec, psgAddress psg, busAddress bus){
     prec->next = psg;
     prec->next->prev = psg;
 
-    bus->info.jumPsg++;
+    bus->info.passengerCount++;
 } 

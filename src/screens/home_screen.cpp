@@ -1,10 +1,10 @@
-#include "screenA.h"
+#include "home_screen.h"
 
-void screenA_run(AppState *app) {
+void HomeScreen(AppState *app, int initial_pos_y, int initial_pos_x) {
     clear();
-    mvprintw(2, 2, "=== SCREEN A ===");
-    mvprintw(4, 2, "Press 'b' to go back to menu");
-    mvprintw(5, 2, "Press 'q' or ESC to exit");
+    mvprintw(2, initial_pos_x, "=== SCREEN A ===");
+    mvprintw(4, initial_pos_x, "Press 'b' to go back to menu");
+    mvprintw(5, initial_pos_x, "Press 'q' or ESC to exit");
 
     refresh();
 

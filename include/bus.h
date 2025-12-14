@@ -5,7 +5,9 @@ typedef struct {
     int busID;
     int capacity;
     std::string route;
-    int jumPsg;
+    int passengerCount;
+    double price;
+    float attractiveness;
 } Bus;
 
 struct busElement {

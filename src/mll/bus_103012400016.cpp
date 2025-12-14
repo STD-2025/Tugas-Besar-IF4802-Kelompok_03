@@ -11,7 +11,7 @@ busAddress createElmBus(int id, int capacity, std::string route) {
     bus->info.busID = id;
     bus->info.capacity = capacity;
     bus->info.route = route;
-    bus->info.jumPsg = 0;
+    bus->info.passengerCount = 0;
     bus->next = nullptr;
     bus->firstPsg = nullptr;
     return bus;

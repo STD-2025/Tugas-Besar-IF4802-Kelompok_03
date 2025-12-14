@@ -1,11 +1,11 @@
-#include "menu_screen.h"
+#include "main_menu_screen.h"
 #include "ascii_items.h"
 
 #define MENU_COUNT 2
 
 const ASCII_ART menu_items[] = {ART_START, ART_EXIT};
 
-void menuScreen(AppState *app, int initial_py, int initial_px) {
+void MainMenuScreen(AppState *app, int initial_py, int initial_px) {
     int selected = 0;
 
     while (true) {
