@@ -1,6 +1,6 @@
 #pragma once
 
-#include <ncurses.h>
+#include <curses.h>
 
 typedef enum {
     SCREEN_MENU,

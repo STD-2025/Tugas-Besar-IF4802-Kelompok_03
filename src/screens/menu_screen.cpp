@@ -1,55 +1,52 @@
 #include "menu_screen.h"
-
-static const char *menu_items[] = {
-    "Go to Screen A",
-    "Exit"
-};
+#include "ascii_items.h"
 
 #define MENU_COUNT 2
 
-void menu_screen(AppState *app) {
+const ASCII_ART menu_items[] = {ART_START, ART_EXIT};
+
+void menuScreen(AppState *app, int initial_py, int initial_px) {
     int selected = 0;
 
     while (true) {
         clear();
 
-        mvprintw(1, 2, "=== MENU ===");
+        int py = 4 + printArt(ART_TITLE.art, ART_TITLE.lines, initial_py, initial_px);    
+
         for (int i = 0; i < MENU_COUNT; i++) {
             if (i == selected)
-                attron(A_REVERSE);
-
-            mvprintw(3 + i, 4, "%s", menu_items[i]);
-
-            if (i == selected)
-                attroff(A_REVERSE);
+                printArt(ART_ARROW.art, ART_ARROW.lines, py, initial_px);
+            
+            py = py + 1 + printArt(menu_items[i].art, menu_items[i].lines, py, initial_px + 5);
         }
+
+        mvprintw(py, initial_px, "=======================================================================================");
 
         refresh();
 
         int ch = getch();
+
         switch (ch) {
-            case KEY_UP:
-                selected = (selected - 1 + MENU_COUNT) % MENU_COUNT;
-                break;
+        case KEY_UP:
+            selected = (selected - 1 + MENU_COUNT) % MENU_COUNT;
+            break;
 
-            case KEY_DOWN:
-                selected = (selected + 1) % MENU_COUNT;
-                break;
+        case KEY_DOWN:
+            selected = (selected + 1) % MENU_COUNT;
+            break;
 
-            case '\n':  // Enter
-                if (selected == 0) {
-                    app->current = SCREEN_A;
-                    return;
-                } else if (selected == 1) {
-                    app->current = SCREEN_EXIT;
-                    return;
-                }
+        case '\n':
+            switch (selected)
+            {
+            case 0:
+                app->current = SCREEN_A;
                 break;
-
-            case 27: // ESC
-            case 'q':
+            
+            case 1:
                 app->current = SCREEN_EXIT;
-                return;
+                break;
+            }
+            return;
         }
     }
 }

@@ -2,6 +2,9 @@
 #include "menu_screen.h"
 #include "screenA.h"
 
+#include "screen_helper.h"
+#include "config.h"
+
 void app_init(AppState *app) {
     app->current = SCREEN_MENU;
     app->isRunning = true;
@@ -11,7 +14,7 @@ void app_run(AppState *app) {
     while (app->isRunning) {
         switch (app->current) {
             case SCREEN_MENU:
-                menu_screen(app);
+                menuScreen(app, getCenterPosY(MENU_CONTENT_HEIGHT), getCenterPosX(MENU_CONTENT_WIDTH));
                 break;
 
             case SCREEN_A:
@@ -19,7 +22,7 @@ void app_run(AppState *app) {
                 break;
 
             case SCREEN_EXIT:
-                app->isRunning = 0;
+                app->isRunning = false;
                 break;
         }
     }

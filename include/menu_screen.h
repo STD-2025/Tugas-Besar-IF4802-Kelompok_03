@@ -2,4 +2,4 @@
 
 #include "app.h"
 
-void menu_screen(AppState *app);
+void menuScreen(AppState *app, int initial_px, int initial_py);
