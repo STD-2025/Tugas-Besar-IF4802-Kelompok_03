@@ -11,7 +11,7 @@ void menuScreen(AppState *app, int initial_py, int initial_px) {
     while (true) {
         clear();
 
-        int py = 4 + printArt(ART_TITLE.art, ART_TITLE.lines, initial_py, initial_px);    
+        int py = initial_py + 1 + printArt(ART_TITLE.art, ART_TITLE.lines, initial_py, initial_px);    
 
         for (int i = 0; i < MENU_COUNT; i++) {
             if (i == selected)
