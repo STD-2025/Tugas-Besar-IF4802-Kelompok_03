@@ -1,4 +1,4 @@
-#include "data.h"
+#include "random_data.h"
 
 const char *PASSENGER_NAMES[MAX_PSG_NAME] = {
     "James", "Liam", "Noah", "Oliver", "Elijah", "William",
