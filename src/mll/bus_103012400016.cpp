@@ -50,3 +50,41 @@ void insertAfterBus(BusList &L, busAddress bus, busAddress prec){
     }
 }
 
+float hitungRatioBus(busAddress bus){
+   return float(bus->info.jumPsg) / float(bus->info.capacity); 
+}
+
+void insertionSortBus(BusList &L){
+    if (L.first == nullptr || L.first->next == nullptr) {
+        return;
+    }
+
+    busAddress sorted;
+    sorted = nullptr;
+
+    busAddress curr;
+    curr = L.first;
+    while (curr != nullptr) {
+        busAddress next;
+        next = curr->next; 
+
+        if (sorted == nullptr || hitungRatioBus(curr) < hitungRatioBus(sorted)) {
+            curr->next = sorted;
+            sorted = curr;
+        } else {
+            busAddress temp;
+            temp = sorted;
+            while (temp->next != nullptr &&
+                   hitungRatioBus(temp->next) <= hitungRatioBus(curr)) {
+                temp = temp->next;
+            }
+
+            curr->next = temp->next;
+            temp->next = curr;
+        }
+
+        curr = next;
+    }
+
+    L.first = sorted;
+}
