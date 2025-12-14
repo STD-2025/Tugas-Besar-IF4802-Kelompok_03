@@ -12,11 +12,6 @@ extern ASCII_ART ART_START;
 extern ASCII_ART ART_EXIT;
 extern ASCII_ART ART_ARROW;
 
-// extern const char *ART_TITLE_DATA[];
-// extern const char *ART_START_DATA[];
-// extern const char *ART_EXIT_DATA[];
-// extern const char *ART_ARROW_DATA[];
-
 /**
  * @param art The ascii art contained in array of char
  * @param lines The number of lines in the art
