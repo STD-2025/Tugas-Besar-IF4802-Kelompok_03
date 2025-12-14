@@ -2,13 +2,11 @@
 #include <iostream>
 
 using namespace std;
-psgAddress createElmPassengger(int id, std::string name, std::string tglLahir) {
+psgAddress createElmPassengger(Passenger passenger_info) {
     psgAddress psg;
 
     psg = new passengerElement;
-    psg->info.name = name;
-    psg->info.passengerID = id;
-    psg->info.dateOfBirth = tglLahir;
+    psg->info = passenger_info;
     psg->next = nullptr;
     psg->prev = nullptr;
 

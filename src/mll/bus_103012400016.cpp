@@ -4,14 +4,11 @@ void createListBus(BusList &L){
     L.first = nullptr;
 }
 
-busAddress createElmBus(int id, int capacity, std::string route) {
+busAddress createElmBus(Bus bus_data) {
     busAddress bus;
 
     bus = new busElement;
-    bus->info.busID = id;
-    bus->info.capacity = capacity;
-    bus->info.route = route;
-    bus->info.passengerCount = 0;
+    bus->info = bus_data;
     bus->next = nullptr;
     bus->firstPsg = nullptr;
     return bus;
