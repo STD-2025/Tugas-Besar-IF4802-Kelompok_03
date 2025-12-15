@@ -48,7 +48,7 @@ void insertAfterBus(BusList &L, busAddress bus, busAddress prec){
 }
 
 float hitungRatioBus(busAddress bus){
-   return float(bus->info.jumPsg) / float(bus->info.capacity); 
+   return float(bus->info.passengerCount) / float(bus->info.capacity); 
 }
 
 void insertionSortBus(BusList &L){

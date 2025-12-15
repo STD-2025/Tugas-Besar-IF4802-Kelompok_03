@@ -88,7 +88,7 @@ void displayListBus(BusList L) {
         std::cout << "ID: "<< p->info.busID << "\n";
         std::cout << "Capacity: "<< p->info.capacity << "\n";
         std::cout << "Bus Route: " << p->info.route << "\n" ;
-        std::cout << "Jumlah Penumpang: " << p->info.jumPsg << "\n" << std::endl;
+        std::cout << "Jumlah Penumpang: " << p->info.passengerCount << "\n" << std::endl;
         ++i;
     }
 }

@@ -11,6 +11,32 @@ bool BuyBus(PlayerState player, BusList marketBusList, Bus bus) {
      * 4. Kurangi uang player
      * 5. Return true untuk mengindikasikan operasi berhasil
      */
+    busAddress adrBus = findElmBus(marketBusList, bus.busID);
+    if (adrBus == nullptr) {
+        return false;
+    }
+
+    if (player.money < adrBus->info.price) {
+        return false;
+    }
+
+    busAddress deleted;
+
+    if (marketBusList.first == adrBus) {
+        deleteFirstBus(marketBusList, deleted);
+    } else {
+        busAddress prec = marketBusList.first;
+        while (prec->next != adrBus) {
+            prec = prec->next;
+        }
+        deleteAfterBus(marketBusList, prec, deleted);
+    }
+
+    insertLastBus(player.busList, deleted);
+
+    player.money -= deleted->info.price;
+
+    return true;
 }
 
 bool SellBus(PlayerState player, Bus bus) {
@@ -21,4 +47,24 @@ bool SellBus(PlayerState player, Bus bus) {
      * 2. Tambah uang player
      * 3. Return true untuk mengindikasikan operasi berhasil
      */
+    busAddress adrBus = findElmBus(player.busList, bus.busID);
+    if (adrBus == nullptr) {
+        return false;
+    }
+
+    busAddress deleted;
+
+    if (player.busList.first == adrBus) {
+        deleteFirstBus(player.busList, deleted);
+    } else {
+        busAddress prec = player.busList.first;
+        while (prec->next != adrBus) {
+            prec = prec->next;
+        }
+        deleteAfterBus(player.busList, prec, deleted);
+    }
+
+    player.money += deleted->info.price;
+
+    return true;
 }
