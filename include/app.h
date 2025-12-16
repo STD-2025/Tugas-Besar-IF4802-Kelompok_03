@@ -1,6 +1,7 @@
 #pragma once
 
-#include <curses.h>
+#include <ncurses.h>
+#include "player_state.h"
 
 typedef enum {
     SCREEN_MENU,
@@ -13,5 +14,5 @@ typedef struct {
     bool isRunning;
 } AppState;
 
-void app_init(AppState *app);
-void app_run(AppState *app);
+void app_init(AppState *app, PlayerState *player);
+void app_run(AppState *app, PlayerState *player);

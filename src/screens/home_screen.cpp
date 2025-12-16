@@ -1,14 +1,46 @@
 #include "home_screen.h"
+#include "config.h"
 
-void HomeScreen(AppState *app, int initial_pos_y, int initial_pos_x) {
+void HomeScreen(AppState *app, PlayerState *player, int initial_pos_y, int initial_pos_x) {
     clear();
-    mvprintw(2, initial_pos_x, "=== SCREEN A ===");
-    mvprintw(4, initial_pos_x, "Press 'b' to go back to menu");
-    mvprintw(5, initial_pos_x, "Press 'q' or ESC to exit");
+
+    int pos_y = 2;
+
+    mvprintw(pos_y++, initial_pos_x, "============================================");
+    mvprintw(pos_y++, initial_pos_x, "Balance : %g", player->money);
+    mvprintw(pos_y++, initial_pos_x, "============================================");
+    mvprintw(pos_y++, initial_pos_x, "Bus count : %d / %d", player->busCount, MAX_BUS);
+
+    move(pos_y++, initial_pos_x++);
+
+    if (player->busList.first == nullptr) {
+        mvprintw(pos_y++, initial_pos_x, "You dont have any bus");
+    } else {
+        for (busElement *bus = player->busList.first; bus; bus = bus->next) {
+            mvprintw(
+                pos_y++, initial_pos_x, "%s (%d/%d)", 
+                bus->info.busName.c_str(), 
+                bus->info.passengerCount,
+                bus->info.capacity
+            );
+        }
+    }
+
+    move(pos_y++, initial_pos_x--);
+
+    mvprintw(pos_y++, initial_pos_x, "============================================");
+    mvprintw(pos_y++, initial_pos_x, "1. Buy bus");
+    mvprintw(pos_y++, initial_pos_x, "2. Sell bus");
+    mvprintw(pos_y++, initial_pos_x, "3. View bus passenger");
+    mvprintw(pos_y++, initial_pos_x, "4. Buy bus");
+    mvprintw(pos_y++, initial_pos_x, "5. Buy bus");
+    mvprintw(pos_y++, initial_pos_x, "6. Buy bus");
+    mvprintw(pos_y++, initial_pos_x, "7. Buy bus");
+    mvprintw(pos_y++, initial_pos_x, "8. Buy bus");
 
     refresh();
 
-    while (1) {
+    while (true) {
         int ch = getch();
         switch (ch) {
             case 'b':

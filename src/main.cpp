@@ -2,6 +2,7 @@
 
 int main() {
     AppState app;
+    PlayerState player;
 
     initscr();
     noecho();
@@ -9,8 +10,8 @@ int main() {
     keypad(stdscr, TRUE);
     curs_set(0);
 
-    app_init(&app);
-    app_run(&app);
+    app_init(&app, &player);
+    app_run(&app, &player);
 
     endwin();
     return 0;

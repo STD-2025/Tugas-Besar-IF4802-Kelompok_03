@@ -3,6 +3,7 @@
 
 typedef struct {
     int busID;
+    std::string busName;
     int capacity;
     std::string route;
     int passengerCount;
