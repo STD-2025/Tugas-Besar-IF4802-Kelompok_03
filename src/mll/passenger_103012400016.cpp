@@ -63,31 +63,21 @@ void insertAfterPassenger(psgAddress prec, psgAddress psg, busAddress bus){
 } 
 
 void insertPassengerBySeat(psgAddress psg, busAddress bus){
-    psgAddress curr;
-    curr = bus->firstPsg;
-    //cek kapasitas
-    if (bus->info.passengerCount == bus->info.capacity){
+    if (bus->info.passengerCount >= bus->info.capacity){
         return;
     }
+    
+    psgAddress curr;
+    curr = bus->firstPsg;
 
-    if (bus->firstPsg == nullptr){
+    if (bus->firstPsg == nullptr || psg->info.seatNo < curr->info.seatNo){
         insertFirstPassenger(psg, bus);
     }
-    //lebih kecil dari kursi pertama
-    if(psg->info.noKursi < curr->info.noKursi){
-        insertFirstPassenger(psg, bus);
-    }
-    //search posisi sisip
-    while (curr->next != nullptr && curr->next->info.noKursi < psg->info.noKursi)
+
+    while (curr->next != nullptr && curr->next->info.seatNo < psg->info.seatNo)
     {
         curr = curr->next;
     }
     
-    if (curr->next == nullptr)
-    {
-        insertLastPassenger(psg, bus);
-    }else{
-        insertAfterPassenger(curr, psg, bus);
-    }
-    
+    insertAfterPassenger(curr, psg, bus);
 }

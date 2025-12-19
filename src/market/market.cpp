@@ -9,23 +9,15 @@ void refreshStock(Market *market) {
     
 }
 
-bool BuyBus(PlayerState player, BusList marketBusList, Bus bus) {
-    /**
-     * TODO
-     * 
-     * 1. Cek apakah uang player cukup untuk membeli bus
-     * 2. Jika uang tidak cukup return false
-     * 3. Jika cukup, hapus bus dari marketBusList, lalu tambahkan
-     *      ke BusList pada player.
-     * 4. Kurangi uang player
-     * 5. Return true untuk mengindikasikan operasi berhasil
-     */
+bool BuyBus(Market *market, PlayerState *player, Bus bus) {
+    BusList marketBusList = market->busList; 
+
     busAddress adrBus = findElmBus(marketBusList, bus.busID);
     if (adrBus == nullptr) {
         return false;
     }
 
-    if (player.money < adrBus->info.price) {
+    if (player->money < bus.price) {
         return false;
     }
 
@@ -41,39 +33,32 @@ bool BuyBus(PlayerState player, BusList marketBusList, Bus bus) {
         deleteAfterBus(marketBusList, prec, deleted);
     }
 
-    insertLastBus(player.busList, deleted);
+    insertLastBus(player->busList, deleted);
 
-    player.money -= deleted->info.price;
+    player->money -= bus.price;
 
     return true;
 }
 
-bool SellBus(PlayerState player, Bus bus) {
-    /**
-     * TODO
-     * 
-     * 1. Hapus bus dari BusList milik player
-     * 2. Tambah uang player
-     * 3. Return true untuk mengindikasikan operasi berhasil
-     */
-    busAddress adrBus = findElmBus(player.busList, bus.busID);
+bool SellBus(PlayerState *player, Bus bus) {
+    busAddress adrBus = findElmBus(player->busList, bus.busID);
     if (adrBus == nullptr) {
         return false;
     }
 
     busAddress deleted;
 
-    if (player.busList.first == adrBus) {
-        deleteFirstBus(player.busList, deleted);
+    if (player->busList.first == adrBus) {
+        deleteFirstBus(player->busList, deleted);
     } else {
-        busAddress prec = player.busList.first;
+        busAddress prec = player->busList.first;
         while (prec->next != adrBus) {
             prec = prec->next;
         }
-        deleteAfterBus(player.busList, prec, deleted);
+        deleteAfterBus(player->busList, prec, deleted);
     }
 
-    player.money += deleted->info.price;
+    player->money += bus.price;
 
     return true;
 }
