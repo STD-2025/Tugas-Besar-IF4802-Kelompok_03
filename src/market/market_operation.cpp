@@ -11,7 +11,8 @@ bool BuyBus(PlayerState player, BusList marketBusList, Bus bus) {
      * 4. Kurangi uang player
      * 5. Return true untuk mengindikasikan operasi berhasil
      */
-    busAddress adrBus = findElmBus(marketBusList, bus.busID);
+    busAddress adrBus;
+    adrBus = findElmBus(marketBusList, bus.busID);
     if (adrBus == nullptr) {
         return false;
     }
