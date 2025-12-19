@@ -1,4 +1,5 @@
 #include "market.h"
+#include "randomizer.h"
 #include "bus_operation.h"
 
 void initializeMarket(Market *market) {
@@ -6,10 +7,14 @@ void initializeMarket(Market *market) {
 }
 
 void refreshStock(Market *market) {
-    
+    int deletedCount = randomInt(0, market->busCount);
+
+    for (int i = 0; i < deletedCount; ++i) {
+        
+    }
 }
 
-bool BuyBus(Market *market, PlayerState *player, Bus bus) {
+bool buyBus(Market *market, PlayerState *player, Bus bus) {
     BusList marketBusList = market->busList; 
 
     busAddress adrBus = findElmBus(marketBusList, bus.busID);
@@ -40,7 +45,7 @@ bool BuyBus(Market *market, PlayerState *player, Bus bus) {
     return true;
 }
 
-bool SellBus(PlayerState *player, Bus bus) {
+bool sellBus(PlayerState *player, Bus bus) {
     busAddress adrBus = findElmBus(player->busList, bus.busID);
     if (adrBus == nullptr) {
         return false;

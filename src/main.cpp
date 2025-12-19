@@ -1,11 +1,11 @@
 #include "app.h"
 
 int main() {
-    const Config cfg = {
+    Config cfg = {
         .main_menu_content_width = 87,
         .main_menu_content_height = 30,
 
-        .home_content_width = 80,
+        .home_content_width = 60,
         .home_content_height = 30,
 
         .max_bus = 12,

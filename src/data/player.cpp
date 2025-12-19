@@ -1,9 +1,8 @@
-#include "player_state.h"
+#include "player.h"
 #include "bus_operation.h"
-#include "config.h"
 
-void initializePlayer(PlayerState *player) {
-    player->money = INITIAL_MONEY;
+void initializePlayer(PlayerState *player, Config *cfg) {
+    player->money = cfg->initial_money;
     player->busCount = 0;
     createListBus(player->busList);
 }

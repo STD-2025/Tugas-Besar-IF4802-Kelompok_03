@@ -20,5 +20,5 @@ typedef struct {
     const Config *config;
 } AppState;
 
-AppState createApp(PlayerState *player, Config const *cfg);
+AppState createApp(PlayerState *player, Config *cfg);
 void runApp(AppState *app, PlayerState *player);

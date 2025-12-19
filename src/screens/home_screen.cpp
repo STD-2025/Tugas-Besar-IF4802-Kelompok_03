@@ -5,20 +5,25 @@ void HomeScreen(AppState *app, PlayerState *player, int initial_pos_y, int initi
     clear();
 
     int pos_y = 2;
+    int x_spacing = 1;
+    int pos_x = initial_pos_x + x_spacing;
 
-    mvprintw(pos_y++, initial_pos_x, "============================================");
-    mvprintw(pos_y++, initial_pos_x, "Balance : %g", player->money);
-    mvprintw(pos_y++, initial_pos_x, "============================================");
-    mvprintw(pos_y++, initial_pos_x, "Bus count : %d / %d", player->busCount, app->config->max_bus);
+    mvprintw(pos_y++, pos_x-x_spacing, "============================================================");
+    move(pos_y++, pos_x);
+    mvprintw(pos_y++, pos_x, "Balance : %g", player->money);
+    move(pos_y++, pos_x);
+    mvprintw(pos_y++, pos_x-x_spacing, "============================================================");
+    move(pos_y++, pos_x);
+    mvprintw(pos_y++, pos_x, "Bus count : %d / %d", player->busCount, app->config->max_bus);
 
-    move(pos_y++, initial_pos_x++);
+    move(pos_y++, pos_x);
 
     if (player->busList.first == nullptr) {
-        mvprintw(pos_y++, initial_pos_x, "You dont have any bus");
+        mvprintw(pos_y++, pos_x, "You dont have any bus");
     } else {
         for (busElement *bus = player->busList.first; bus; bus = bus->next) {
             mvprintw(
-                pos_y++, initial_pos_x, "%s : (%d/%d)", 
+                pos_y++, pos_x, "%s : (%d/%d)", 
                 bus->info.busName.c_str(), 
                 bus->info.passengerCount,
                 bus->info.capacity
@@ -26,15 +31,17 @@ void HomeScreen(AppState *app, PlayerState *player, int initial_pos_y, int initi
         }
     }
 
-    move(pos_y++, initial_pos_x--);
+    move(pos_y++, pos_x);
 
-    mvprintw(pos_y++, initial_pos_x, "============================================");
-    mvprintw(pos_y++, initial_pos_x, "1 : View bus passenger");
-    mvprintw(pos_y++, initial_pos_x, "2 : Buy bus");
-    mvprintw(pos_y++, initial_pos_x, "3 : Sell bus");
-    mvprintw(pos_y++, initial_pos_x, "4 : See all passenger");
-    mvprintw(pos_y++, initial_pos_x, "q : Exit game");
-    mvprintw(pos_y++, initial_pos_x, "============================================");
+    mvprintw(pos_y++, pos_x-x_spacing, "============================================================");
+    move(pos_y++, pos_x);
+    mvprintw(pos_y++, pos_x, "1 : View bus passenger");
+    mvprintw(pos_y++, pos_x, "2 : Buy bus");
+    mvprintw(pos_y++, pos_x, "3 : Sell bus");
+    mvprintw(pos_y++, pos_x, "4 : See all passenger");
+    mvprintw(pos_y++, pos_x, "q : Exit game");
+    move(pos_y++, pos_x);
+    mvprintw(pos_y++, pos_x-x_spacing, "============================================================");
 
     refresh();
 

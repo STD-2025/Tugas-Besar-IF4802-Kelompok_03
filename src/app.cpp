@@ -3,7 +3,7 @@
 #include "screen_helper.h"
 
 AppState createApp(PlayerState *player, Config *cfg) {
-    initializePlayer(player);
+    initializePlayer(player, cfg);
 
     AppState app = {
         .current = SCREEN_MENU,
@@ -27,17 +27,17 @@ void runApp(AppState *app, PlayerState *player) {
                 HomeScreen(app, player, getCenterPosY(cfg->home_content_height), getCenterPosX(cfg->home_content_width));
                 break;
 
-            case SCREEN_BUS:
-                BusScreen(app, player, getCenterPosY(cfg->home_content_height), getCenterPosX(cfg->home_content_width));
-                break;
+            // case SCREEN_BUS:
+            //     BusScreen(app, player, getCenterPosY(cfg->home_content_height), getCenterPosX(cfg->home_content_width));
+            //     break;
 
-            case SCREEN_BUY_BUS:
-                BuyBusScreen(app, player, getCenterPosY(cfg->home_content_height), getCenterPosX(cfg->home_content_width));
-                break;
+            // case SCREEN_BUY_BUS:
+            //     BuyBusScreen(app, player, getCenterPosY(cfg->home_content_height), getCenterPosX(cfg->home_content_width));
+            //     break;
 
-            case SCREEN_SELL_BUS:
-                SellBusScreen(app, player, getCenterPosY(cfg->home_content_height), getCenterPosX(cfg->home_content_width));
-                break;
+            // case SCREEN_SELL_BUS:
+            //     SellBusScreen(app, player, getCenterPosY(cfg->home_content_height), getCenterPosX(cfg->home_content_width));
+            //     break;
 
             case SCREEN_EXIT:
                 app->isRunning = false;
