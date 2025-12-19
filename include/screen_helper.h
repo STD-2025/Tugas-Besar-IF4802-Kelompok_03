@@ -1,6 +1,4 @@
-#pragma once
-
-#include <curses.h>
+#include <ncurses.h>
 
 /**
  * @param width The width of the content you want to print

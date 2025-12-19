@@ -1,4 +1,4 @@
-#include "main_menu_screen.h"
+#include "screen.h"
 #include "ascii_items.h"
 
 #define MENU_COUNT 2
@@ -39,7 +39,7 @@ void MainMenuScreen(AppState *app, int initial_py, int initial_px) {
             switch (selected)
             {
             case 0:
-                app->current = SCREEN_A;
+                app->current = SCREEN_HOME;
                 break;
             
             case 1:

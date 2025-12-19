@@ -1,18 +1,24 @@
 #pragma once
 
 #include <ncurses.h>
-#include "player_state.h"
+#include "player.h"
+#include "config.h"
 
 typedef enum {
+    SCREEN_EXIT,
     SCREEN_MENU,
-    SCREEN_A,
-    SCREEN_EXIT
-} ScreenType;
+    SCREEN_HOME,
+    SCREEN_BUS,
+    SCREEN_BUY_BUS,
+    SCREEN_SELL_BUS,
+    SCREEN_PASSENGER
+} Screen;
 
 typedef struct {
-    ScreenType current;
+    Screen current;
     bool isRunning;
+    const Config *config;
 } AppState;
 
-void app_init(AppState *app, PlayerState *player);
-void app_run(AppState *app, PlayerState *player);
+AppState createApp(PlayerState *player, Config const *cfg);
+void runApp(AppState *app, PlayerState *player);

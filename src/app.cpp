@@ -1,25 +1,42 @@
 #include "app.h"
-#include "main_menu_screen.h"
-#include "home_screen.h"
-
+#include "screen.h"
 #include "screen_helper.h"
-#include "config.h"
 
-void app_init(AppState *app, PlayerState *player) {
-    app->current = SCREEN_MENU;
-    app->isRunning = true;
+AppState createApp(PlayerState *player, Config *cfg) {
     initializePlayer(player);
+
+    AppState app = {
+        .current = SCREEN_MENU,
+        .isRunning = true,
+        .config = cfg,
+    };
+
+    return app;
 }
 
-void app_run(AppState *app, PlayerState *player) {
+void runApp(AppState *app, PlayerState *player) {
+    const Config *cfg = app->config;
+
     while (app->isRunning) {
         switch (app->current) {
             case SCREEN_MENU:
-                MainMenuScreen(app, getCenterPosY(MAIN_MENU_CONTENT_HEIGHT), getCenterPosX(MAIN_MENU_CONTENT_WIDTH));
+                MainMenuScreen(app, getCenterPosY(cfg->main_menu_content_height), getCenterPosX(cfg->main_menu_content_width));
                 break;
 
-            case SCREEN_A:
-                HomeScreen(app, player, getCenterPosY(HOME_CONTENT_HEIGHT), getCenterPosX(HOME_CONTENT_WIDTH));
+            case SCREEN_HOME:
+                HomeScreen(app, player, getCenterPosY(cfg->home_content_height), getCenterPosX(cfg->home_content_width));
+                break;
+
+            case SCREEN_BUS:
+                BusScreen(app, player, getCenterPosY(cfg->home_content_height), getCenterPosX(cfg->home_content_width));
+                break;
+
+            case SCREEN_BUY_BUS:
+                BuyBusScreen(app, player, getCenterPosY(cfg->home_content_height), getCenterPosX(cfg->home_content_width));
+                break;
+
+            case SCREEN_SELL_BUS:
+                SellBusScreen(app, player, getCenterPosY(cfg->home_content_height), getCenterPosX(cfg->home_content_width));
                 break;
 
             case SCREEN_EXIT:

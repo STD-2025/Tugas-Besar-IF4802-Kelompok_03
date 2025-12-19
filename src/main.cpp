@@ -1,8 +1,21 @@
 #include "app.h"
 
 int main() {
-    AppState app;
+    const Config cfg = {
+        .main_menu_content_width = 87,
+        .main_menu_content_height = 30,
+
+        .home_content_width = 80,
+        .home_content_height = 30,
+
+        .max_bus = 12,
+
+        .initial_money = 1000.0,
+    };
+
     PlayerState player;
+    
+    AppState app = createApp(&player, &cfg);
 
     initscr();
     noecho();
@@ -10,9 +23,9 @@ int main() {
     keypad(stdscr, TRUE);
     curs_set(0);
 
-    app_init(&app, &player);
-    app_run(&app, &player);
+    runApp(&app, &player);
 
     endwin();
+    
     return 0;
 }

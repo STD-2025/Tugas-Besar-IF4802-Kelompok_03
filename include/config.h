@@ -1,11 +1,13 @@
 #pragma once
 
-extern const int MAIN_MENU_CONTENT_WIDTH;
-extern const int MAIN_MENU_CONTENT_HEIGHT;
+typedef struct {
+    const int main_menu_content_width;
+    const int main_menu_content_height;
 
-extern const int HOME_CONTENT_WIDTH;
-extern const int HOME_CONTENT_HEIGHT;
+    const int home_content_width;
+    const int home_content_height;
 
-extern const int MAX_BUS;
+    const int max_bus;
 
-extern const double INITIAL_MONEY;
+    const double initial_money;
+} Config;

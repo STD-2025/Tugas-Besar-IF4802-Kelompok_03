@@ -5,6 +5,7 @@ typedef struct {
     int passengerID;
     std::string name;
     std::string dateOfBirth;
+    int seatNo;
 } Passenger;
 
 struct passengerElement {
