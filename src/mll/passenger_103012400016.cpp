@@ -84,3 +84,36 @@ void insertPassengerBySeat(psgAddress psg, busAddress bus){
         insertAfterPassenger(curr, psg, bus);
     }
 }
+
+void removePassengerBySeat(busAddress bus, int seatNo) {
+    if (bus->firstPsg == nullptr) {
+        return;
+    }
+
+    psgAddress curr = bus->firstPsg;
+
+    // jika di awal
+    if (curr->info.seatNo == seatNo) {
+        bus->firstPsg = curr->next;
+        if (bus->firstPsg != nullptr) {
+            bus->firstPsg->prev = nullptr;
+        }
+        delete curr;
+        bus->info.passengerCount--;
+        return;
+    }
+
+    // di tengah / akhir
+    while (curr != nullptr && curr->info.seatNo != seatNo) {
+        curr = curr->next;
+    }
+
+    if (curr != nullptr) {
+        curr->prev->next = curr->next;
+        if (curr->next != nullptr) {
+            curr->next->prev = curr->prev;
+        }
+        delete curr;
+        bus->info.passengerCount--;
+    }
+}
