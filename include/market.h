@@ -2,13 +2,15 @@
 
 #include "bus.h"
 #include "player.h"
+#include "config.h"
 
 typedef struct {
     BusList busList;
     int busCount;
+    int maxBus;
 } Market;
 
-void initializeMarket(Market *market);
+void initializeMarket(Market *market, Config *cfg);
 void refreshStock(Market *market);
 
 bool buyBus(Market *market, PlayerState *player, Bus bus);

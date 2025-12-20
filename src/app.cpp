@@ -2,8 +2,9 @@
 #include "screen.h"
 #include "screen_helper.h"
 
-AppState createApp(PlayerState *player, Config *cfg) {
+AppState createApp(PlayerState *player, Market *market, Config *cfg) {
     initializePlayer(player, cfg);
+    initializeMarket(market, cfg);
 
     AppState app = {
         .current = SCREEN_MENU,
@@ -14,7 +15,7 @@ AppState createApp(PlayerState *player, Config *cfg) {
     return app;
 }
 
-void runApp(AppState *app, PlayerState *player) {
+void runApp(AppState *app, PlayerState *player, Market *market) {
     const Config *cfg = app->config;
 
     while (app->isRunning) {

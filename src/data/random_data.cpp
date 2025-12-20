@@ -1,6 +1,6 @@
 #include "random_data.h"
 
-const char *PASSENGER_NAMES[MAX_PSG_NAME] = {
+const std::vector<std::string> passengerNames = {
     "James", "Liam", "Noah", "Oliver", "Elijah", "William",
     "Benjamin", "Lucas", "Henry", "Alexander", "Mason", "Michael",
     "Ethan", "Daniel", "Jacob", "Logan", "Jackson", "Levi",
@@ -87,4 +87,84 @@ const char *PASSENGER_NAMES[MAX_PSG_NAME] = {
     "Vito", "Westin", "Xavian", "Yarden", "Zared", "Alessio",
     "Brennan", "Cassian", "Dario", "Emery", "Finnegan", "Grady",
     "Hendrix", "Lucian"
+};
+
+const std::vector<std::string> busNames = {
+    "Atlas Line", "Orion Express", "Nova Transit", "Falcon Way", "Horizon Link",
+    "Titan Route", "Comet Shuttle", "Apex Bus", "Vector Transit", "Summit Line",
+    "Polaris Express", "Voyager Route", "Eclipse Bus", "MetroSwift", "Silverline Transit",
+    "Crossway Express", "UrbanStar", "Skyway Bus", "Ironclad Route", "Northwind Line",
+
+    "Eastgate Transit", "Westbound Express", "Southridge Bus", "Northcrest Line", "BlueArrow Transit",
+    "Redstone Route", "Goldleaf Express", "Harborway Bus", "Ridgepoint Line", "CityPulse",
+
+    "RapidWay", "MetroLinker", "StreetRunner", "UrbanLoop", "CityGlide",
+    "Roadspire", "Wayfarer Line", "TransitCore", "Velocity Bus", "Swiftline",
+
+    "Crown Route", "Keystone Express", "Landmark Transit", "Pathway Bus", "Greenfield Line",
+    "Oakridge Express", "Pinecrest Route", "Riverbend Transit", "Brookstone Line", "Hilltop Bus",
+
+    "Grandway", "PrimeRoute", "Unity Transit", "Everline", "Clearway Express",
+    "CityAxis", "Gridline Bus", "Mainstreet Route", "Capital Transit", "UrbanEdge",
+
+    "Crosslink Express", "Jetway Bus", "Starpath Line", "Coreway Transit", "Midtown Express",
+    "Downtown Loop", "Uptown Route", "Skyline Transit", "Borough Line", "District Express",
+
+    "Ironway", "Steelroute", "Copperline", "Platinum Transit", "Sapphire Route",
+    "Emerald Express", "Ruby Line", "Onyx Bus", "Quartz Transit", "Crystalway",
+
+    "Sunrise Express", "Sunset Line", "Daybreak Route", "Nightfall Transit", "Moonline Bus",
+    "Starlight Express", "Aurora Route", "Dawnway", "Twilight Transit", "Horizon Nightline",
+
+    "Pathfinder", "Trailblazer Bus", "Frontline Express", "Pioneer Route", "Explorer Transit",
+    "Nomad Line", "Venture Bus", "Odyssey Express", "Passageway", "Crossroad Transit",
+
+    "MetroDrive", "Roadlink Express", "Pathline", "Waypoint Bus", "CityTrack",
+    "RouteMaster", "TransitWay", "Streetline", "Roadcraft", "CityVoyage",
+
+    "Arrowhead Express", "Longhaul Line", "Fastlane Transit", "Overland Bus", "Milepost Route",
+    "Turnpike Express", "Highway Line", "Freeway Transit", "Parkway Bus", "Bypass Route",
+
+    "Cornerstone Transit", "Stronghold Express", "Bridgeway Line", "Gateway Bus", "Threshold Transit",
+    "Entryway Express", "Passline", "Linkpoint Bus", "Connector Route", "Junction Transit",
+
+    "Silvercrest Line", "Goldpath Express", "Bronze Route", "Ironpeak Transit", "Stoneway Bus",
+    "Brickline Express", "Mason Route", "Foundry Transit", "Forgeway", "Anvil Express",
+
+    "Crestline", "Ridgeway Transit", "Valley Express", "Lowland Route", "Plainview Bus",
+    "Highland Transit", "Summit Ridge Line", "Peakway Express", "Canyon Route", "Basin Transit",
+
+    "Cityward", "Townlink Express", "Boroughway", "Suburb Transit", "Ringroad Bus",
+    "Loopline Express", "Radial Route", "Spokeway Transit", "Gridway", "Network Line",
+
+    "Northstar Express", "Southstar Route", "Eaststar Transit", "Weststar Line", "Cardinal Bus",
+    "Meridian Express", "Latitude Route", "Longitude Transit", "Compass Line", "Bearing Bus",
+
+    "TransitOne", "RouteTwo", "LineThree", "BusFour", "WayFive",
+    "PathSix", "LinkSeven", "MoveEight", "FlowNine", "GoTen",
+
+    "VelocityOne", "VelocityTwo", "VelocityThree", "VelocityFour", "VelocityFive",
+    "VelocitySix", "VelocitySeven", "VelocityEight", "VelocityNine", "VelocityTen",
+
+    "MetroAlpha", "MetroBeta", "MetroGamma", "MetroDelta", "MetroEpsilon",
+    "MetroZeta", "MetroEta", "MetroTheta", "MetroIota", "MetroKappa",
+
+    "TransitPrime", "TransitNova", "TransitUltra", "TransitMax", "TransitCore",
+    "TransitEdge", "TransitFlow", "TransitAxis", "TransitPulse", "TransitWave",
+
+    "Busline Alpha", "Busline Beta", "Busline Gamma",
+    "Busline Delta", "Busline Sigma", "Busline Omega"
+};
+
+const std::vector<std::string> busStops = {
+    "Merdeka", "Sudirman", "Thamrin", "Gatot Subroto", "Asia Afrika",
+    "Cendrawasih", "Pahlawan", "Diponegoro", "Ahmad Yani", "Juanda",
+
+    "Senayan", "Blok M", "Kuningan", "Tebet", "Manggarai",
+    "Tanah Abang", "Pasar Baru", "Harmoni", "Kota Tua", "Monas",
+
+    "Rawamangun", "Kelapa Gading", "Sunter", "Ancol", "Pluit",
+    "Cawang", "Kalideres", "Slipi", "Palmerah", "Lebak Bulus",
+
+    "Fatmawati", "Cipete"
 };

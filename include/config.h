@@ -8,6 +8,8 @@ typedef struct {
     const int home_content_height;
 
     const int max_bus;
+    const int max_market_bus;
 
+    const int initial_m_bus_count;
     const double initial_money;
 } Config;

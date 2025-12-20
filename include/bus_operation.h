@@ -5,7 +5,7 @@
 
 void createListBus(BusList &L);
 
-busAddress createElmBus(int id, int capacity, std::string route);
+busAddress createElmBus(Bus busData);
 
 void insertFirstBus(BusList  &L, busAddress bus);
 

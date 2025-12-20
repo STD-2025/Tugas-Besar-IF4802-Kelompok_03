@@ -79,5 +79,9 @@ void insertPassengerBySeat(psgAddress psg, busAddress bus){
         curr = curr->next;
     }
     
-    insertAfterPassenger(curr, psg, bus);
+    if (curr->next == nullptr) {
+        insertLastPassenger(psg, bus);
+    } else {
+        insertAfterPassenger(curr, psg, bus);
+    }
 }

@@ -3,7 +3,7 @@
 #include "bus.h"
 #include "passenger.h"
 
-psgAddress createElmPassengger(int id, std::string name, std::string dateOfBirth);
+psgAddress createElmPassengger(Passenger passenger_info);
 
 void insertFirstPassenger(psgAddress psg, busAddress bus);
 

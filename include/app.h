@@ -3,6 +3,7 @@
 #include <ncurses.h>
 #include "player.h"
 #include "config.h"
+#include "market.h"
 
 typedef enum {
     SCREEN_EXIT,
@@ -20,5 +21,5 @@ typedef struct {
     const Config *config;
 } AppState;
 
-AppState createApp(PlayerState *player, Config *cfg);
-void runApp(AppState *app, PlayerState *player);
+AppState createApp(PlayerState *player, Market *market, Config *cfg);
+void runApp(AppState *app, PlayerState *player, Market *market);

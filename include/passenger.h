@@ -4,7 +4,7 @@
 typedef struct {
     int passengerID;
     std::string name;
-    std::string dateOfBirth;
+    int age;
     int seatNo;
 } Passenger;
 
