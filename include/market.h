@@ -3,10 +3,10 @@
 #include "bus.h"
 #include "player.h"
 #include "config.h"
+#include <vector>
 
 typedef struct {
-    BusList busList;
-    int busCount;
+    std::vector<Bus> busList;
     int maxBus;
 } Market;
 

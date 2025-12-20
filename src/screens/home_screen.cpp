@@ -1,5 +1,4 @@
 #include "screen.h"
-#include "config.h"
 
 void HomeScreen(AppState *app, PlayerState *player, int initial_pos_y, int initial_pos_x) {
     clear();
@@ -8,11 +7,11 @@ void HomeScreen(AppState *app, PlayerState *player, int initial_pos_y, int initi
     int x_spacing = 1;
     int pos_x = initial_pos_x + x_spacing;
 
-    mvprintw(pos_y++, pos_x-x_spacing, "============================================================");
+    mvprintw(pos_y++, pos_x-x_spacing, "================================================================================");
     move(pos_y++, pos_x);
     mvprintw(pos_y++, pos_x, "Balance : %g", player->money);
     move(pos_y++, pos_x);
-    mvprintw(pos_y++, pos_x-x_spacing, "============================================================");
+    mvprintw(pos_y++, pos_x-x_spacing, "================================================================================");
     move(pos_y++, pos_x);
     mvprintw(pos_y++, pos_x, "Bus count : %d / %d", player->busCount, app->config->max_bus);
 
@@ -33,7 +32,7 @@ void HomeScreen(AppState *app, PlayerState *player, int initial_pos_y, int initi
 
     move(pos_y++, pos_x);
 
-    mvprintw(pos_y++, pos_x-x_spacing, "============================================================");
+    mvprintw(pos_y++, pos_x-x_spacing, "================================================================================");
     move(pos_y++, pos_x);
     mvprintw(pos_y++, pos_x, "1 : View bus passenger");
     mvprintw(pos_y++, pos_x, "2 : Buy bus");
@@ -41,32 +40,29 @@ void HomeScreen(AppState *app, PlayerState *player, int initial_pos_y, int initi
     mvprintw(pos_y++, pos_x, "4 : See all passenger");
     mvprintw(pos_y++, pos_x, "q : Exit game");
     move(pos_y++, pos_x);
-    mvprintw(pos_y++, pos_x-x_spacing, "============================================================");
+    mvprintw(pos_y++, pos_x-x_spacing, "================================================================================");
 
     refresh();
 
-    while (true) {
-        int ch = getch();
-        switch (ch) {
-            case '1':
-                app->current = SCREEN_MENU;
-                return;
-            
-            case '2':
-                app->current = SCREEN_MENU;
-                return;
+    int ch = getch();
+    switch (ch) {
+        case '1':
+            app->current = SCREEN_MENU;
+            return;
+        
+        case '2':
+            app->current = SCREEN_BUY_BUS;
+            return;
 
-            case '3':
-                app->current = SCREEN_MENU;
-                return;
-            case '4':
-                app->current = SCREEN_MENU;
-                return;
+        case '3':
+            app->current = SCREEN_MENU;
+            return;
+        case '4':
+            app->current = SCREEN_MENU;
+            return;
 
-            case 'q':
-            case 27: // ESC
-                app->current = SCREEN_EXIT;
-                return;
-        }
+        case 'q':
+            app->current = SCREEN_EXIT;
+            return;
     }
 }

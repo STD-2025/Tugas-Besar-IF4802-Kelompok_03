@@ -1,7 +1,6 @@
 #include "psg_operation.h"
 #include <iostream>
 
-using namespace std;
 psgAddress createElmPassengger(Passenger passenger_info) {
     psgAddress psg;
 

@@ -12,4 +12,6 @@ typedef struct {
 
     const int initial_m_bus_count;
     const double initial_money;
+
+    const int market_refresh_interval;
 } Config;

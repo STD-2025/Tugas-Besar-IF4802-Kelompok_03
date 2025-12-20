@@ -5,6 +5,24 @@
 #include <algorithm>
 #include <cmath>
 
+int searchBusById(std::vector<Bus> list, int targetID) {
+    int left = 0;
+    int right = list.size() - 1;
+
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+
+        if (list[mid].busID == targetID)
+            return mid;
+        else if (list[mid].busID < targetID)
+            left = mid + 1;
+        else
+            right = mid - 1;
+    }
+
+    return -1; // not found
+}
+
 int generateBusId() {
     static int nextId = 0;
     return ++nextId;
@@ -39,18 +57,6 @@ double generateBusPrice(float A, int C, int C_ref, double P_min, double P_max, d
     return price;
 }
 
-void initializeMarket(Market *market, Config *cfg) {
-    createListBus(market->busList);
-
-    market->maxBus = cfg->max_market_bus; 
-    
-    for (int i = 0; i < cfg->initial_m_bus_count; ++i) {
-        insertLastBus(market->busList, createElmBus(generateBus(20, 150, 600)));
-    }
-    
-    market->busCount = cfg->initial_m_bus_count;
-}
-
 Bus generateBus(int capacityRef, double minPrice, double maxPrice) {
     Bus bus = {
         .busID = generateBusId(),
@@ -63,6 +69,7 @@ Bus generateBus(int capacityRef, double minPrice, double maxPrice) {
             .attractiveness = randomFloat(0.2f, 0.8f),
         },
         .passengerCount = 0,
+        .price = 9999999.0,
     };
 
     double noiseFactor = 0.05;
@@ -75,39 +82,36 @@ Bus generateBus(int capacityRef, double minPrice, double maxPrice) {
         maxPrice,
         noiseFactor
     );
+
+    return bus;
+}
+
+void initializeMarket(Market *market, Config *cfg) {
+    market->maxBus = cfg->max_market_bus;
+
+    for (int i = 0; i < cfg->initial_m_bus_count; ++i) {
+        market->busList.push_back(generateBus(20, 150.0, 600.0));
+    }
 }
 
 void refreshStock(Market *market) {
-    int delCount = randomInt(0, market->busCount);
+    int delCount = randomInt(0, market->busList.size());
 
     for (int i = 0; i < delCount; ++i) {
-        int delIndex = randomInt(1, market->busCount);
-
-        busAddress b = market->busList.first;
-
-        while (b && delIndex > 1) {
-            b = b->next;
-            delIndex--;
-        }
-
-        deleteAfterBus(market->busList, b);
-
-        market->busCount--;
+        market->busList.pop_back();
     }
 
-    int addCount = randomInt(1, market->maxBus - market->busCount);
+    int addCount = randomInt(1, std::max(market->maxBus - static_cast<int>(market->busList.size()), 1));
 
     for (int i = 0; i < addCount; ++i) {
-        insertLastBus(market->busList, createElmBus(generateBus(40, 150.0, 1000.0)));
-        market->busCount++;
+        market->busList.push_back(generateBus(40, 150.0, 1000.0));
     }
 }
 
 bool buyBus(Market *market, PlayerState *player, Bus bus) {
-    BusList marketBusList = market->busList; 
+    int busIndex = searchBusById(market->busList, bus.busID);
 
-    busAddress adrBus = findElmBus(marketBusList, bus.busID);
-    if (adrBus == nullptr) {
+    if (busIndex == -1) {
         return false;
     }
 
@@ -115,19 +119,10 @@ bool buyBus(Market *market, PlayerState *player, Bus bus) {
         return false;
     }
 
-    busAddress deleted;
+    Bus bought_bus = market->busList[busIndex];
+    market->busList.erase(market->busList.begin() + busIndex);
 
-    if (marketBusList.first == adrBus) {
-        deleteFirstBus(marketBusList, deleted);
-    } else {
-        busAddress prec = marketBusList.first;
-        while (prec->next != adrBus) {
-            prec = prec->next;
-        }
-        deleteAfterBus(marketBusList, prec, deleted);
-    }
-
-    insertLastBus(player->busList, deleted);
+    insertLastBus(player->busList, createElmBus(bought_bus));
 
     player->money -= bus.price;
 
@@ -135,21 +130,20 @@ bool buyBus(Market *market, PlayerState *player, Bus bus) {
 }
 
 bool sellBus(PlayerState *player, Bus bus) {
-    busAddress adrBus = findElmBus(player->busList, bus.busID);
-    if (adrBus == nullptr) {
+    busAddress busIndex = findElmBus(player->busList, bus.busID);
+    if (busIndex == nullptr) {
         return false;
     }
 
-    busAddress deleted;
 
-    if (player->busList.first == adrBus) {
-        deleteFirstBus(player->busList, deleted);
+    if (player->busList.first == busIndex) {
+        deleteFirstBus(player->busList);
     } else {
         busAddress prec = player->busList.first;
-        while (prec->next != adrBus) {
+        while (prec->next != busIndex) {
             prec = prec->next;
         }
-        deleteAfterBus(player->busList, prec, deleted);
+        deleteAfterBus(player->busList, prec);
     }
 
     player->money += bus.price;

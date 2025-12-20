@@ -118,16 +118,3 @@ psgAddress findElmPassenger(busAddress bus, int id) {
     while (p && p->info.passengerID != id) p = p->next;
     return p;
 }
-
-void displayListPassenger(busAddress bus) {
-    if (!bus) return;
-    
-    int i = 1;
-    for (psgAddress p = bus->firstPsg; p; p = p->next) {
-        std::cout << "Passenger-" << i << ":\n";
-        std::cout << "ID: "<< p->info.passengerID << "\n";
-        std::cout << "Nama: "<< p->info.name << "\n";
-        std::cout << "Date of Birth: "<< p->info.dateOfBirth << "\n" << std::endl;
-        ++i;
-    }
-}

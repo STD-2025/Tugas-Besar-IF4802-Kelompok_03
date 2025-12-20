@@ -11,4 +11,6 @@ double randomDouble(double min, double max);
 float randomFloat(float min, float max);
 
 template<typename T>
-const T& randomFrom(const std::vector<T>& v);
+const T& randomFrom(const std::vector<T>& v) {
+    return v[randomInt(0, static_cast<int>(v.size() - 1))];
+}

@@ -4,6 +4,7 @@
 #include "player.h"
 #include "config.h"
 #include "market.h"
+#include "timer.h"
 
 typedef enum {
     SCREEN_EXIT,
@@ -15,10 +16,15 @@ typedef enum {
     SCREEN_PASSENGER
 } Screen;
 
+typedef enum {
+    REFRESH_STOCK,
+} TimerIndex;
+
 typedef struct {
     Screen current;
     bool isRunning;
     const Config *config;
+    TimerManager tm;
 } AppState;
 
 AppState createApp(PlayerState *player, Market *market, Config *cfg);

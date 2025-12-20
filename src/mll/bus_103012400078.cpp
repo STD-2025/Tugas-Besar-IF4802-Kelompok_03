@@ -1,5 +1,4 @@
 #include "bus_operation.h"
-#include <iostream>
 
 void deleteFirstBus(BusList  &L) {
     if (L.first == nullptr) return;
@@ -79,16 +78,4 @@ busAddress findElmBus(BusList L, int id) {
     busAddress p = L.first;
     while (p && p->info.busID != id) p = p->next;
     return p;
-}
-
-void displayListBus(BusList L) {
-    int i = 1;
-    for (busAddress p = L.first; p; p = p->next) {
-        std::cout << "Bus-" << i << ":\n";
-        std::cout << "ID: "<< p->info.busID << "\n";
-        std::cout << "Capacity: "<< p->info.capacity << "\n";
-        std::cout << "Bus Route: " << p->info.route << "\n" ;
-        std::cout << "Jumlah Penumpang: " << p->info.passengerCount << "\n" << std::endl;
-        ++i;
-    }
 }
