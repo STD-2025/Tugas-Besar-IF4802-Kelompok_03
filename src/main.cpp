@@ -27,6 +27,7 @@ int main() {
     cbreak();
     nodelay(stdscr, TRUE);
     curs_set(0);
+    keypad(stdscr, TRUE);
 
     runApp(&app, &player, &market);
 

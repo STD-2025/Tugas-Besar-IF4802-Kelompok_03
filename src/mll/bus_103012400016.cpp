@@ -65,14 +65,14 @@ void insertionSortBus(BusList &L){
         busAddress next;
         next = curr->next; 
 
-        if (sorted == nullptr || hitungRatioBus(curr) < hitungRatioBus(sorted)) {
+        if (sorted == nullptr || hitungRatioBus(curr) > hitungRatioBus(sorted)) {
             curr->next = sorted;
             sorted = curr;
         } else {
             busAddress temp;
             temp = sorted;
             while (temp->next != nullptr &&
-                   hitungRatioBus(temp->next) <= hitungRatioBus(curr)) {
+                   hitungRatioBus(temp->next) >= hitungRatioBus(curr)) {
                 temp = temp->next;
             }
 
