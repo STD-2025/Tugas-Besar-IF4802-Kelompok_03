@@ -18,7 +18,7 @@ void BuyBusScreen(
 
     mvprintw(pos_y++, pos_x-x_spacing, "================================================================================");
     move(pos_y++, pos_x);
-    mvprintw(pos_y++, pos_x, "Balance : %g", player->money);
+    mvprintw(pos_y++, pos_x, "Balance : $%g", player->money);
     move(pos_y++, pos_x);
     mvprintw(pos_y++, pos_x-x_spacing, "================================================================================");
     move(pos_y++, pos_x);
@@ -56,6 +56,8 @@ void BuyBusScreen(
     move(pos_y++, pos_x);
     mvprintw(pos_y++, pos_x-x_spacing, "================================================================================");
 
+    refresh();
+
     int ch = getch();
 
     if (ch != ERR) {
@@ -74,6 +76,4 @@ void BuyBusScreen(
             return;
         }
     }
-
-    refresh();
 }

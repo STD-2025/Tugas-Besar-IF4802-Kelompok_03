@@ -12,5 +12,3 @@ void HomeScreen(AppState *app, PlayerState *player, int initial_pos_y, int initi
 void BusScreen(AppState *app, PlayerState *player, int initial_pos_y, int initial_pos_x);
 
 void BuyBusScreen(AppState *app, PlayerState *player, Market *market, int initial_pos_y, int initial_pos_x);
-
-void SellBusScreen(AppState *app, PlayerState *player, int initial_pos_y, int initial_pos_x);

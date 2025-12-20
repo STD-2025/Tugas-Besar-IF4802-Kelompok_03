@@ -122,9 +122,12 @@ bool buyBus(Market *market, PlayerState *player, Bus bus) {
     Bus bought_bus = market->busList[busIndex];
     market->busList.erase(market->busList.begin() + busIndex);
 
+    bought_bus.price *= 0.8;
+
     insertLastBus(player->busList, createElmBus(bought_bus));
 
     player->money -= bus.price;
+    player->busCount++;
 
     return true;
 }
@@ -147,6 +150,7 @@ bool sellBus(PlayerState *player, Bus bus) {
     }
 
     player->money += bus.price;
+    player->busCount--;
 
     return true;
 }
