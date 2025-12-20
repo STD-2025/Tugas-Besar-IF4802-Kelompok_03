@@ -75,7 +75,7 @@ void HomeScreen(AppState *app, PlayerState *player, int initial_pos_y, int initi
     case 0:
         switch (ch) {
             case '1':
-                app->current = SCREEN_MENU;
+                app->current = SCREEN_BUS;
                 return;
             
             case '2':

@@ -40,9 +40,9 @@ void runApp(AppState *app, PlayerState *player, Market *market) {
                 HomeScreen(app, player, getCenterPosY(cfg->home_content_height), getCenterPosX(cfg->home_content_width));
                 break;
 
-            // case SCREEN_BUS:
-            //     BusScreen(app, player, getCenterPosY(cfg->home_content_height), getCenterPosX(cfg->home_content_width));
-            //     break;
+            case SCREEN_BUS:
+                BusScreen(app, player, getCenterPosY(cfg->home_content_height), getCenterPosX(cfg->home_content_width));
+                break;
 
             case SCREEN_BUY_BUS:
                 BuyBusScreen(app, player, market, getCenterPosY(cfg->home_content_height), getCenterPosX(cfg->home_content_width));
